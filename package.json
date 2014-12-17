@@ -1,0 +1,18 @@
+{
+  "name": "muniv_dashboard",
+  "version": "1.0.0",
+  "description": "mUniv Mobile App Configuration Database",
+  "main": "dashboard.js",
+  "dependencies": {
+    "express": "^4.10.6",
+    "express3-handlebars": "^0.5.2"
+  },
+  "devDependencies": {
+    "mocha": "^2.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "INGENIOCITY",
+  "license": "ISC"
+}
