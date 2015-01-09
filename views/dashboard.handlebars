@@ -1,0 +1,110 @@
+{{#section 'navbar'}}
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                    <!-- <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>-->
+                    </a>
+                    <a class="brand" href="#">Admin Panel</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+			    <li> </li>
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Sumit Arora <i class="caret"></i>
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#">Profile</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1" href="login.html">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+{{/section}}
+
+{{#section 'content'}}
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3" id="sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                        <li class="active">
+                            <a href="/dashboard"><i class="icon-chevron-right"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="/registerNewInst"><i class="icon-chevron-right"></i> Register A New Institute</a>
+                        </li>
+                        <li>
+                            <a href="/editSettings"><i class="icon-chevron-right"></i> Edit App Settings</a>
+                        </li>
+                        <li>
+                            <a href="/uploadData"><i class="icon-chevron-right"></i> Upload Data for Institutes</a>
+                        </li>
+			<li>
+                            <a href="/users"><i class="icon-chevron-right"></i> Users</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!--/span-->
+                <div class="span9" id="content">
+                    <div class="row-fluid">
+                        
+                    </div>
+                    <div class="span9" id="content">
+                    	<div class="row-fluid">
+                            <!-- block -->
+                            <div class="block">
+                                <div class="navbar navbar-inner block-header">
+                                    <div class="muted pull-left">Current Status</div>
+                                    <!--<div class="pull-right"><span class="badge badge-info">1,234</span>-->
+
+                                    <!--</div>-->
+                                </div>
+                                <div class="block-content collapse in">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Registered Institutes</td>
+                                                <td>10</td>
+                                                <td><a href="#"><span class="badge badge-info">View Details</span></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Registered users</td>
+                                                <td>5</td>
+                                                <td><a href="#"><span class="badge badge-info">View Details</span></a></td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /block -->
+                        </div>
+                        
+                    </div>
+                        <!-- /block -->
+                </div>
+            </div>
+            <hr>
+            <footer>
+                <div class="pull-left"><p>&copy; <a href="http://ingeniocity.co">INGENIOCITY</a> 2014</p></div>
+                <div class="pull-right"><p><a href="http://ingeniocity.co">www.ingeniocity.co</a> | <a href="mailto:support@ingeniocity.co">support@ingeniocity.co</a></p></div>
+            </footer>
+        </div>
+        <!--/.fluid-container-->
+        <script src="vendors/jquery-1.9.1.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+
+{{/section}}

@@ -1,0 +1,9 @@
+<div id=test>
+	{{#each options}}
+		{{#compare value "===" "true"}}
+			<input type="checkbox" name="{{name}}" value="{{name}}" checked>{{name}}</input>
+		{{else}}
+			<input type="checkbox" name="{{name}}" value="{{name}}">{{name}}</input>
+		{{/compare}}
+	{{/each}}
+</div>

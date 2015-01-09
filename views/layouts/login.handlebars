@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    
+	<head>
+		<title>Forms</title>
+		<!-- Bootstrap -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+		<link href="assets/styles.css" rel="stylesheet" media="screen">
+		<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	</head>
+
+	<body>
+		<div class="row-fluid">
+		<!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">Form Validation</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+					<!-- BEGIN FORM-->
+					<form action="#" id="form_sample_1" class="form-horizontal">
+						<fieldset>
+							<div class="alert alert-error hide">
+								<button class="close" data-dismiss="alert"></button>
+								You have some form errors. Please check below.
+							</div>
+							<div class="alert alert-success hide">
+								<button class="close" data-dismiss="alert"></button>
+								Your form validation is successful!
+							</div>
+  							
+  							<div class="control-group">
+  								<label class="control-label">Email<span class="required">*</span></label>
+  								<div class="controls">
+  									<input name="email" type="text" class="span6 m-wrap"/>
+  								</div>
+  							</div>
+							<div class="control-group">
+								<label class="control-lobel">Password<span class="required">*</span></label>
+								<div class="controls">
+									<input name="password" type="password" class="span6 m-wrap"/>
+								</div>
+							</div>
+  							
+						</fieldset>
+					</form>
+					<!-- END FORM-->
+				</div>
+			    </div>
+			</div>
+                     	<!-- /block -->
+		    </div>
+                     <!-- /validation -->
+
+
+
+
+
+    </body>
+</html>
