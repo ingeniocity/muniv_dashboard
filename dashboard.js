@@ -1,5 +1,14 @@
 var express = require('express');
 var handlebars = require('express-handlebars');
+
+var mongo = require('mongodb');
+var monk = require('monk');
+
+//Create Database Object using Monk
+var db = monk('localhost:27017/database_name');
+
+var db_api = ('./lib/dbApi.js');
+
 var app = express();
 
 //Creating Handlebars Instance and configuring it
@@ -57,7 +66,7 @@ app.engine('handlebars', ehbs.engine);
 app.set('view engine', 'handlebars');
 
 // require services
-var fortune = require('./lib/fortune.js');
+
 var options = require('./lib/options.js');
 
 console.log(ehbs);
@@ -68,6 +77,12 @@ app.set('port', process.env.PORT || 3000);
 app.use(function(req, res, next){
 	res.locals.showTests = app.get('env') !== 'production' &&
 	req.query.test === '1';
+	next();
+});
+
+//
+app.use(function(req, res, next) {
+	req.db = db;
 	next();
 });
 
@@ -84,10 +99,6 @@ app.post('/login', function(req,res){
 	res.redirect('dashboard');
 });
 
-app.get('/about', function(req, res){
-	res.render('about', { fortune: fortune.getFortune() } );
-});
-
 app.get('/headers', function(req,res){
 	res.set('Content-Type','text/plain');
 	var s = '';
@@ -98,13 +109,16 @@ app.get('/dashboard', function(req, res) {
 	res.render('dashboard');
 });
 app.get('/registerNewInst', function(req,res){
-	res.render('newinstform', {title: "Register New App"});
+	res.render('instfeatureswizard', {title: "Register New App"});
 });
 app.get('/editSettings', function(req,res){
 	res.render('editsettings', {title: "Edit App Settings"});
 });
 app.get('/uploadData', function(req,res){
 	res.render('uploaddata', {title: "Upload Data"});
+});
+app.get('/users', function(req,res){
+	res.render('users', {title: "Manage Users"});;
 });
 app.get('/options', function(req,res){
 	

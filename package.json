@@ -5,7 +5,10 @@
   "main": "dashboard.js",
   "dependencies": {
     "express": "^4.10.6",
-    "express-handlebars": "^1.1.0"
+    "express-handlebars": "^1.1.0",
+    "mongo": "^0.1.0",
+    "mongodb": "^1.4.29",
+    "monk": "^0.9.1"
   },
   "devDependencies": {
     "chai": "^1.10.0",
