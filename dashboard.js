@@ -5,7 +5,7 @@ var mongo = require('mongodb');
 var monk = require('monk');
 
 //Create Database Object using Monk
-var db = monk('localhost:27017/database_name');
+var db = monk('localhost:27017/users_test');
 
 var db_api = ('./lib/dbApi.js');
 
@@ -98,7 +98,6 @@ app.post('/login', function(req,res){
 	console.log(req);
 	res.redirect('dashboard');
 });
-
 app.get('/headers', function(req,res){
 	res.set('Content-Type','text/plain');
 	var s = '';
@@ -118,7 +117,17 @@ app.get('/uploadData', function(req,res){
 	res.render('uploaddata', {title: "Upload Data"});
 });
 app.get('/users', function(req,res){
-	res.render('users', {title: "Manage Users"});;
+	res.render('users', {title: "Manage Users"});
+});
+app.post('/users', function(req, res){
+	console.log("POST REQUEST USERS");
+	var db = req.db;
+	var collection = db.get('usercollection');
+	collection.find({},{}, function(e, docs) {
+		console.log(docs);
+		console.log({"success":true, "data" : docs});
+		res.send({"success":true, "data" : docs});
+	});
 });
 app.get('/options', function(req,res){
 	
