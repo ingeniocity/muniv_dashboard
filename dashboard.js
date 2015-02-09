@@ -113,12 +113,21 @@ app.get('/registerNewInst', function(req,res){
 	res.render('instfeatureswizard', {title: "Register New App"});
 });
 app.get('/editSettings', function(req,res){
-	res.render('editsettings', {title: "Edit App Settings"});
+	var q_str = qs.parse(req.url.split('?')[1]);
+	if(q_str)
+		res.render('editfeatureswizard', {title: "Edit Features"}); 
+	else
+		res.render('editsettings', {title: "Edit App Settings"});
 });
-app.get('/fl', function(req, res){
+app.get('/es', function(req, res) {
 	var q_str = qs.parse(req.url.split('?')[1]);
 	
-	console.log(q_str);
+});
+app.post('/fl', function(req, res){
+	var q_str = qs.parse(req.url.split('?')[1]);
+	
+	console.log(q_str.i);
+	db_api.returnfeaturesforapp(req.db, q_str);
 });
 app.get('/uploadData', function(req,res){
 	res.render('uploaddata', {title: "Upload Data"});
@@ -126,16 +135,17 @@ app.get('/uploadData', function(req,res){
 app.get('/users', function(req,res){
 	res.render('users', {title: "Manage Users"});
 });
-app.post('/users', function(req, res){
-	console.log("POST REQUEST USERS");
-	var db = req.db;
-	var collection = db.get('User_Config');
+app.post('/u', function(req, res){
+	//console.log("POST REQUEST USERS");
+	var q_str = qs.parse(req.url.split('?')[1]);
+	
+	var collection = req.db.get('User_Config');
 	collection.find({},{}, function(e, docs) {
 		if(!docs)
 			res.send(e);
 
-		console.log(docs);
-		console.log({"success":true, "data" : docs});
+		//console.log(docs);
+		//console.log({"success":true, "data" : docs});
 		res.send({"success":true, "data" : docs});
 	});
 });

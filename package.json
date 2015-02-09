@@ -8,7 +8,8 @@
     "express-handlebars": "^1.1.0",
     "mongo": "^0.1.0",
     "mongodb": "^1.4.29",
-    "monk": "^0.9.1"
+    "monk": "^0.9.1",
+    "querystring": "^0.2.0"
   },
   "devDependencies": {
     "chai": "^1.10.0",
