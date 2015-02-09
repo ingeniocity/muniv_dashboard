@@ -4,8 +4,10 @@ var handlebars = require('express-handlebars');
 var mongo = require('mongodb');
 var monk = require('monk');
 
+var qs = require('querystring');
+
 //Create Database Object using Monk
-var db = monk('localhost:27017/users_test');
+var db = monk('localhost:27017/mUnivDashboard');
 
 var db_api = ('./lib/dbApi.js');
 
@@ -113,6 +115,11 @@ app.get('/registerNewInst', function(req,res){
 app.get('/editSettings', function(req,res){
 	res.render('editsettings', {title: "Edit App Settings"});
 });
+app.get('/fl', function(req, res){
+	var q_str = qs.parse(req.url.split('?')[1]);
+	
+	console.log(q_str);
+});
 app.get('/uploadData', function(req,res){
 	res.render('uploaddata', {title: "Upload Data"});
 });
@@ -122,8 +129,11 @@ app.get('/users', function(req,res){
 app.post('/users', function(req, res){
 	console.log("POST REQUEST USERS");
 	var db = req.db;
-	var collection = db.get('usercollection');
+	var collection = db.get('User_Config');
 	collection.find({},{}, function(e, docs) {
+		if(!docs)
+			res.send(e);
+
 		console.log(docs);
 		console.log({"success":true, "data" : docs});
 		res.send({"success":true, "data" : docs});
