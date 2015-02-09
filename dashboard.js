@@ -9,7 +9,7 @@ var qs = require('querystring');
 //Create Database Object using Monk
 var db = monk('localhost:27017/mUnivDashboard');
 
-var db_api = ('./lib/dbApi.js');
+var db_api = require('./lib/dbApi.js');
 
 var app = express();
 
@@ -107,13 +107,19 @@ app.get('/headers', function(req,res){
 	res.send(s);
 });
 app.get('/dashboard', function(req, res) {
-	res.render('dashboard');
+	res.render('dashboard', {title: "mUniv Dashboard"});
+});
+app.post('/un', function(req, res) {
+	db_api.countusers(db, res);
+});
+app.post('/in', function(req, res) {
+	db_api.countinstitutes(db, res);
 });
 app.get('/registerNewInst', function(req,res){
 	res.render('instfeatureswizard', {title: "Register New App"});
 });
 app.get('/editSettings', function(req,res){
-	var q_str = qs.parse(req.url.split('?')[1]);
+	var q_str = req.url.split('?')[1];
 	if(q_str)
 		res.render('editfeatureswizard', {title: "Edit Features"}); 
 	else
@@ -137,17 +143,22 @@ app.get('/users', function(req,res){
 });
 app.post('/u', function(req, res){
 	//console.log("POST REQUEST USERS");
-	var q_str = qs.parse(req.url.split('?')[1]);
+	//var q_str = qs.parse(req.url.split('?')[1]);
+	var q_str = req.url.split('?')[1];
+	if(q_str)
+		console.log(q_str);	
+	else
+		db_api.getallusers(db, res);	
 	
-	var collection = req.db.get('User_Config');
-	collection.find({},{}, function(e, docs) {
-		if(!docs)
-			res.send(e);
+	//var collection = req.db.get('User_Config');
+	//collection.find({},{}, function(e, docs) {
+	//	if(!docs)
+	//		res.send(e);
 
 		//console.log(docs);
 		//console.log({"success":true, "data" : docs});
-		res.send({"success":true, "data" : docs});
-	});
+	//	res.send({"success":true, "data" : docs});
+	//});
 });
 app.get('/options', function(req,res){
 	

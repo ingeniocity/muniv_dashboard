@@ -32,6 +32,43 @@
         </div>
 {{/section}}
 
+{{#section 'jquery'}}
+<script>
+$(document).ready(function(){
+        $.ajax({
+                url : '/un',
+                type : 'POST',
+                success: function(data){
+			console.log(data);
+			$("#nusers").html("<strong>"+data.data+"</strong>");
+			//document.getElementById("nusers").InnerHTML = data.data;
+                },      
+                error: function(err){
+                        //$container.html('There was a problem.');
+                        console.log("There was a problem");
+                        console.log(err);
+                }
+        });
+
+	$.ajax({
+		url : '/in',
+		type : 'POST',
+		success: function(data){
+			console.log(data);
+			$("#ninst").html("<strong>"+data.data+"</strong>");
+			//document.getElementById("ninst").InnerHTML = data.data;
+			
+		},
+		error: function(err){
+			console.log("There was a problem");
+			console.log(err);
+		}
+	});
+			
+});
+</script>
+{{/section}}
+
 {{#section 'content'}}
         <div class="container-fluid">
             <div class="row-fluid">
@@ -70,29 +107,24 @@
 
                                     <!--</div>-->
                                 </div>
-				<div style="text-align:center" class="block-content collapse in">
-					<img src="/images/ajax_loader.gif">
-				</div>
                                 <div class="block-content collapse in">
-				<!--
                                     <table class="table table-bordered">
                                         <thead>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>Registered Institutes</td>
-                                                <td id="reg_inst"><img src="/images/ajax_loader.gif"></td>
-                                                <td><a href="#"><span class="badge badge-info">View Details</span></a></td>
+                                                <td id="ninst"><img src="/images/ajax_loader.gif"></td>
+                                                <td><a href="/editsettings"><span class="badge badge-info">View Details</span></a></td>
                                             </tr>
                                             <tr>
                                                 <td>Registered users</td>
-                                                <td id="reg_users"<img src="/images/ajax_loader.gif"></td>
-                                                <td><a href="#"><span class="badge badge-info">View Details</span></a></td>
+                                                <td id="nusers"><img src="/images/ajax_loader.gif"></td>
+                                                <td><a href="/users"><span class="badge badge-info">View Details</span></a></td>
                                             </tr>
                                             
                                         </tbody>
                                     </table>
-				-->
                                 </div>
                             </div>
                             <!-- /block -->
