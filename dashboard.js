@@ -125,6 +125,10 @@ app.get('/editSettings', function(req,res){
 	else
 		res.render('editsettings', {title: "Edit App Settings"});
 });
+app.post('/ic', function(req, res) {
+	db_api.getallinstitutes(db, res);
+});
+
 app.get('/es', function(req, res) {
 	var q_str = qs.parse(req.url.split('?')[1]);
 	

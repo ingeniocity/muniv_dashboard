@@ -1,3 +1,6 @@
+{{#section 'head'}}
+{{/section}}
+
 {{#section 'navbar'}}
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
@@ -30,6 +33,54 @@
                 </div>
             </div>
         </div>
+{{/section}}
+
+{{#section 'jquery'}}
+<script>
+$(document).ready(function(){
+	$.ajax({
+                url : '/ic',
+                type : 'POST',
+                success: function(data){
+			constructinsttable(data);
+		},
+		error: function(data){
+			console.log("There was some error!");
+		}
+	});
+});
+
+function constructinsttable(data)
+{
+	var html_text = '<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">' +
+		'<thead>'+
+			'<tr>'+
+				'<th>Institute</th>'+
+				'<th>Enable/Disable</th>'+
+				'<th>Edit Settings</th>'+
+				'<th>Regenerate Key/Salt pair</th>'+
+				'<th>Delete</th>'+
+			'</tr>'+
+		'</thead>'+
+		'<tbody>';
+	for(var i = 0; i < data.data.length; i++)
+	{
+		html_text += '<tr>';
+		html_text += 	'<td>'+data.data[i].instituteName+'</td>';
+		html_text += 	'<td>'+(data.data[i].enable ? "Enable" : "Disable")+'</td>';
+		html_text +=	'<td><a href="/editsettings?i='+data.data[i].instituteCode+'"><span class="badge badge-info">Edit Settings</span></a></td>';
+		html_text +=	'<td class="center"><a href="#"><span class="badge badge-warning">Regenerate Credentials</span></a></td>';
+		html_text +=	'<td class="center"><a href="#"><span class="badge badge-important">Delete</span></a></td>';
+		html_text += '</tr>';
+	}
+	html_text += '</tbody>';
+	html_text += '</table>';
+
+	document.getElementById("instTable").innerHTML = html_text;
+
+}
+	
+</script>
 {{/section}}
 
 {{#section 'content'}}
@@ -66,7 +117,8 @@
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
-                                    
+                                    <div id="instTable"><center><img src="images/ajax_loader.gif"></center></div>
+					<!--
  					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
 										<thead>
 											<tr>
@@ -115,6 +167,7 @@
 											</tr>
 										</tbody>
 					</table>
+					-->
                                 </div>
                             </div>
                         </div>
@@ -137,9 +190,10 @@
 
         <script src="assets/scripts.js"></script>
         <script src="assets/DT_bootstrap.js"></script>
+
         <script>
         $(function() {
-            
+
         });
         </script>
 
