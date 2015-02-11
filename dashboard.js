@@ -120,8 +120,9 @@ app.get('/registerNewInst', function(req,res){
 });
 app.get('/editSettings', function(req,res){
 	var q_str = req.url.split('?')[1];
+	console.log(qs.parse(q_str));
 	if(q_str)
-		res.render('editfeatureswizard', {title: "Edit Features"}); 
+		res.render('editfeatureswizard', {title: "Edit Features", INSTCODE: qs.parse(q_str).i}); 
 	else
 		res.render('editsettings', {title: "Edit App Settings"});
 });
@@ -129,15 +130,18 @@ app.post('/ic', function(req, res) {
 	db_api.getallinstitutes(db, res);
 });
 
-app.get('/es', function(req, res) {
+app.post('/es', function(req, res) {
 	var q_str = qs.parse(req.url.split('?')[1]);
-	
+	db_api.getdatainstitute(req.db, res, q_str.i);	
 });
 app.post('/fl', function(req, res){
 	var q_str = qs.parse(req.url.split('?')[1]);
-	
-	console.log(q_str.i);
-	db_api.returnfeaturesforapp(req.db, q_str);
+	console.log(q_str);
+
+	if(!(q_str.i && q_str.k && q_str.s))
+		res.send({success:false, data:"Authentication Failed"});
+	else
+		db_api.getdatainstituteks(req.db, res, q_str);
 });
 app.get('/uploadData', function(req,res){
 	res.render('uploaddata', {title: "Upload Data"});
