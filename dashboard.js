@@ -5,9 +5,9 @@ var mongo = require('mongodb');
 var monk = require('monk');
 
 var qs = require('querystring');
-
+var credentials = require('./credentials.js');
 //Create Database Object using Monk
-var db = monk('localhost:27017/mUnivDashboard');
+var db = monk('localhost:27017/mUnivDatabase');
 
 var db_api = require('./lib/dbApi.js');
 
@@ -82,24 +82,88 @@ app.use(function(req, res, next){
 	next();
 });
 
-//
+//for database
 app.use(function(req, res, next) {
 	req.db = db;
 	next();
 });
+// include bodyParser
+app.use(express.bodyParser());
+//cookies Secret
+app.use(require('cookie-parser')(credentials.cookieSecret));
+//session
+app.use(require('express-session')());
 
+app.use(function(req, res, next){
+// if there's a flash message, transfer
+// it to the context, then clear it
+res.locals.flash = req.session.flash;
+delete req.session.flash;
+next();
+});
 //basic routes
 app.get('/', function(req, res){
 	res.redirect('login');
+	console.log("empty response");
 });
 
 app.get('/login', function(req,res){
-	res.render('login', {title : 'Login to Dashboard'});
+
+	if(req.param("release") == "true"){
+		req.session.destroy(function(err){
+			if(err){
+				console.log(err);
+			}
+			else
+			{
+				res.redirect('/login');
+			}
+		});
+	}
+	else{
+		sess=req.session;
+		if(sess.email){	
+
+			res.redirect('/dashboard');
+		}
+		else{
+			res.cookie('signed_monster', 'nom nom', { signed: true });
+			res.render('login', {title : 'Login to Dashboard'});
+			console.log("inside login get");
+			var signedMonster = req.signedCookies.monster;
+			console.log("Signed Moster"+signedMonster);
+		}
+	}
+	
 });
 app.post('/login', function(req,res){
-	console.log(req);
-	res.redirect('dashboard');
+
+
+	var name = req.body.email +" "+ req.body.password;
+	console.log("name: "+name);
+	var info = [];
+
+	var emailpassword = {"email" : req.body.email, "password" : req.body.password};
+	
+	info.push(emailpassword);
+	
+	//console.log(req);
+	db_api.loginuser(db, res, req, info, function(res, req, data){
+		if(data==true)
+		{
+			console.log("create session");
+			sess=req.session;
+			//In this we are assigning email to sess.email variable.
+			//email comes from HTML page.
+			sess.email=req.body.email;
+
+			res.redirect('/dashboard');
+		}	
+	});
+	//res.redirect('dashboard');
 });
+
+
 app.get('/headers', function(req,res){
 	res.set('Content-Type','text/plain');
 	var s = '';
@@ -107,7 +171,14 @@ app.get('/headers', function(req,res){
 	res.send(s);
 });
 app.get('/dashboard', function(req, res) {
-	res.render('dashboard', {title: "mUniv Dashboard"});
+	sess=req.session;
+	if(!sess.email){	
+		res.redirect('/login');
+	}
+	else{
+		res.render('dashboard', {title: "mUniv Dashboard",email:sess.email});
+	}
+	
 });
 app.post('/un', function(req, res) {
 	db_api.countusers(db, res);
@@ -116,15 +187,48 @@ app.post('/in', function(req, res) {
 	db_api.countinstitutes(db, res);
 });
 app.get('/registerNewInst', function(req,res){
-	res.render('instfeatureswizard', {title: "Register New App"});
+	sess=req.session;
+	if(!sess.email){	
+		res.redirect('/login');
+	}
+	else{
+		res.render('instfeatureswizard', {title: "Register New App"});
+	}
+	
+});
+app.post('/registerNewInst',function(req,res){
+	//console.log(req);
+
+	var name = req.body.instName;
+	console.log(name);
+	console.log(req.body.instName);
+	console.log(req.body.instCode);
+	console.log(req.body.gAcademicInfo);
+	var features=[{"instituteInfo":{"instName":req.body.instName,"instCode":req.body.instCode},
+	"guestFeatures":{"academicInfo":req.body.gAcademicInfo,"athletics":req.body.gAthletics,"universityEvent":req.body.gUniversityEvent,"generalUniversityInfo":req.body.gGeneralUniversityInfo,"searchCourses":req.body.gSearchCourses,"campusMap":req.body.gCampusMap,"socialMedia":req.body.gSocialMedia,"admissionInfo":req.body.gAdmissionInfo,requestForInfo:req.body.gRequestForInfo},
+	"studentFeatures":{"viewClassSchedule":req.body.sViewClassSchedule,"viewEmail":req.body.sViewEmail,"enrollAddDropSwap":req.body.sEnrollAddDropSwap,"viewHolds":req.body.sViewHolds,"viewToDos":req.body.sViewToDos,"viewCommunication":req.body.sViewCommunication,"viewPayBill":req.body.sViewPayBill,"acceptDeclineFinancialAid":req.body.sAcceptDeclineFinancialAid,"updateBio":req.body.sUpdateBio,"viewGrade":req.body.sViewGrade,"applyGraduation":req.body.sApplyGraduation,"officialTranscript":req.body.sOfficialTranscript,"enrollmentVerification":req.body.sEnrollmentVerification,"examSchedule":req.body.sExamSchedule},
+	"facultyFeatures":{"teachingSchedule":req.body.fTeachingSchedule,"classRoster":req.body.fClassRoster,"gradeRoster":req.body.fGradeRoster,"gradeToAllStudents":req.body.fGradeToAllStudents,"examSchedule":req.body.fExamSchedule},
+	"alumniFeatures":{"makeDonation":req.body.amakeDonation,"alumniEventCalender":req.body.aAlumniEventCalender,"updatePersonalInformation":req.body.aUpdatePersonalInformation},
+	"employeeFeatures":{"myPayCheck":req.body.eMyPayCheck},
+	"otherFeatures":{"admissionControlCenter":req.body.oAdmissionControlCenter,"authenticationSetup":req.body.oAuthenticationSetup}
+	}];
+	console.log(features);
 });
 app.get('/editSettings', function(req,res){
-	var q_str = req.url.split('?')[1];
-	console.log(qs.parse(q_str));
-	if(q_str)
-		res.render('editfeatureswizard', {title: "Edit Features", INSTCODE: qs.parse(q_str).i}); 
+
+	sess=req.session;
+	if(!sess.email){	
+		res.redirect('/login');
+	}
 	else
-		res.render('editsettings', {title: "Edit App Settings"});
+	{
+		var q_str = req.url.split('?')[1];
+		console.log(qs.parse(q_str));
+		if(q_str)
+			res.render('editfeatureswizard', {title: "Edit Features", INSTCODE: qs.parse(q_str).i}); 
+		else
+			res.render('editsettings', {title: "Edit App Settings"});
+	}
 });
 app.post('/ic', function(req, res) {
 	db_api.getallinstitutes(db, res);
@@ -144,10 +248,25 @@ app.post('/fl', function(req, res){
 		db_api.getdatainstituteks(req.db, res, q_str);
 });
 app.get('/uploadData', function(req,res){
-	res.render('uploaddata', {title: "Upload Data"});
+	sess=req.session;
+	if(!sess.email){	
+		res.redirect('/login');
+	}
+	else{
+		res.render('uploaddata', {title: "Upload Data"});
+	}
+
+	
 });
 app.get('/users', function(req,res){
-	res.render('users', {title: "Manage Users"});
+	sess=req.session;
+	if(!sess.email){	
+		res.redirect('/login');
+	}
+	else{
+		res.render('users', {title: "Manage Users"});
+	}
+	
 });
 app.post('/u', function(req, res){
 	//console.log("POST REQUEST USERS");
@@ -169,13 +288,22 @@ app.post('/u', function(req, res){
 	//});
 });
 app.get('/options', function(req,res){
+	sess=req.session;
+	if(!sess.email){	
+		res.redirect('/login');
+	}
+	else{
+		var all_options = options.getOptions();
+		res.render('users', {title: "Manage Users"});
+		res.render('options', { options: all_options } );
+	}
 	
-	var all_options = options.getOptions();
+	
 	/*
 	for(var i = 0; i < all_options.length; i++) {
 		console.log(all_options[i]);
 	}*/
-	res.render('options', { options: all_options } );
+	
 });
 
 

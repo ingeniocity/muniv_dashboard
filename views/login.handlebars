@@ -1,9 +1,20 @@
+{{#if flash}}
+<div class="alert alert-dismissible alert-{{flash.type}}">
+<button type="button" class="close"
+data-dismiss="alert" aria-hidden="true">&times;<button>
+<strong>{{flash.intro}}</strong> {{{flash.message}}}
+</div>
+{{/if}}
 <div id="login" class="container">
 
 	<form method="POST" class="form-signin">
 		<h2 class="form-signin-heading">Please sign in</h2>
-		<input type="text" class="input-block-level" placeholder="Email address">
-		<input type="password" class="input-block-level" placeholder="Password">
+
+		{{#if ui}}
+			<h3>{{{ui.message}}}</h3>
+		{{/if}}
+		<input type="text" class="input-block-level" name="email" placeholder="Email address">
+		<input type="password" class="input-block-level" name="password" placeholder="Password">
 		<label class="checkbox">
 			<input type="checkbox" value="remember-me"> Remember me
 		</label>
