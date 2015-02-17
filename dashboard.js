@@ -192,7 +192,7 @@ app.get('/registerNewInst', function(req,res){
 		res.redirect('/login');
 	}
 	else{
-		res.render('instfeatureswizard', {title: "Register New App"});
+		res.render('instfeatureswizard', {title: "Register New App",email:sess.email});
 	}
 	
 });
@@ -213,6 +213,18 @@ app.post('/registerNewInst',function(req,res){
 	"otherFeatures":{"admissionControlCenter":req.body.oAdmissionControlCenter,"authenticationSetup":req.body.oAuthenticationSetup}
 	}];
 	console.log(features);
+	db_api.insertinstitutedata(db, res, req, info, function(res, req, data){
+		if(data)
+		{
+			console.log("data inserted");
+			res.redirect('/dashboard');
+		}
+		else
+		{
+			console.log("data not inserted");
+			res.redirect('/registerNewInst');	
+		}	
+	});
 });
 app.get('/editSettings', function(req,res){
 
@@ -225,9 +237,9 @@ app.get('/editSettings', function(req,res){
 		var q_str = req.url.split('?')[1];
 		console.log(qs.parse(q_str));
 		if(q_str)
-			res.render('editfeatureswizard', {title: "Edit Features", INSTCODE: qs.parse(q_str).i}); 
+			res.render('editfeatureswizard', {title: "Edit Features", email:sess.email}); 
 		else
-			res.render('editsettings', {title: "Edit App Settings"});
+			res.render('editsettings', {title: "Edit App Settings",email:sess.email});
 	}
 });
 app.post('/ic', function(req, res) {
@@ -253,7 +265,7 @@ app.get('/uploadData', function(req,res){
 		res.redirect('/login');
 	}
 	else{
-		res.render('uploaddata', {title: "Upload Data"});
+		res.render('uploaddata', {title: "Upload Data",email:sess.email});
 	}
 
 	
@@ -264,7 +276,7 @@ app.get('/users', function(req,res){
 		res.redirect('/login');
 	}
 	else{
-		res.render('users', {title: "Manage Users"});
+		res.render('users', {title: "Manage Users",email:sess.email});
 	}
 	
 });
@@ -294,7 +306,7 @@ app.get('/options', function(req,res){
 	}
 	else{
 		var all_options = options.getOptions();
-		res.render('users', {title: "Manage Users"});
+		res.render('users', {title: "Manage Users",email:sess.email});
 		res.render('options', { options: all_options } );
 	}
 	

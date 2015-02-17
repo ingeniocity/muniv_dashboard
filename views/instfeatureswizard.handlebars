@@ -1,36 +1,5 @@
-{{#section 'navbar'}}
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container-fluid">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
-                    <!-- <span class="icon-bar"></span>
-                     <span class="icon-bar"></span>-->
-                    </a>
-                    <a class="brand" href="#">Admin Panel</a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav pull-right">
-			    <li> </li>
-                            <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Sumit Arora <i class="caret"></i>
 
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a tabindex="-1" href="#">Profile</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a tabindex="-1" href="login.html">Logout</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--/.nav-collapse -->
-                </div>
-            </div>
-        </div>
-{{/section}}
+
 
 {{#section 'content'}}
 
@@ -75,6 +44,8 @@
                 <!--/span-->
                 <div class="span9" id="content">
 			<!-- wizard -->
+          
+          
                     <div class="row-fluid section">
                          <!-- block -->
                         <div class="block">
@@ -91,9 +62,10 @@
                                             <li><a href="#tab1" data-toggle="tab">Initials</a></li>
                                             <li><a href="#tab2" data-toggle="tab">Guest Features</a></li>
                                             <li><a href="#tab3" data-toggle="tab">Student Portal</a></li>
-                                            <li><a href="#tab4" data-toggle="tab">Applicant Portal </a></li>
+                                            <li><a href="#tab4" data-toggle="tab">Alumni Portal </a></li>
                                             <li><a href="#tab5" data-toggle="tab">Faculty Portal</a></li>
                                             <li><a href="#tab6" data-toggle="tab">Employee Portal</a></li>
+                                             <li><a href="#tab7" data-toggle="tab">Other Features</a></li>
                                         </ul>
                                          </div>
                                           </div>
@@ -101,269 +73,364 @@
                                         <div id="bar" class="progress progress-striped active">
                                           <div class="bar"></div>
                                         </div>
+                                        <form method="post" id="formid" class="form-horizontal">
+                                        <fieldset>
                                         <div class="tab-content">
+                                        
                                             <div class="tab-pane" id="tab1">
-                                               <form class="form-horizontal">
-                                                  <fieldset>
+                                              <!-- <form class="form-horizontal">-->
+                                                 <!-- <fieldset>-->
                                                     <div class="control-group">
-                                                      <label class="control-label" for="focusedInput">Institute Name</label>
+                                                      <label class="control-label" for="instName">Institute Name</label>
                                                       <div class="controls">
-                                                        <input class="input-xlarge focused" id="focusedInput" type="text" value="">
+                                                        <input class="input-xlarge focused" name="instName" id="instName" type="text">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
-                                                      <label class="control-label" for="focusedInput">Institute Code</label>
+                                                      <label class="control-label" for="instCode">Institute Code</label>
                                                       <div class="controls">
-                                                        <input class="input-xlarge focused" id="focusedInput" type="text" value="">
+                                                        <input class="input-xlarge focused" name="instCode" id="instCode" type="text" value="">
                                                       </div>
                                                     </div>
-                                                  </fieldset>
-                                                </form>
+                                                  <!--</fieldset>-->
+                                               <!-- </form>-->
                                             </div>
                                             <div class="tab-pane" id="tab2">
-                                                <form class="form-horizontal">
-                                                  <fieldset>
+                                                <!--<form class="form-horizontal">-->
+                                                  <!--<fieldset>-->
                                                     <div class="control-group">
-                                          		<label class="control-label" for="guestoption1">Guest Option 1</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="guestoption1" value="guestoption1" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
+                                          		  <label class="control-label" for="gAcademicInfo">Academic Info</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="gAcademicInfo"id="gAcademicInfo">
+                                                  </label>
+                                              </div>
+                                              </div>
                                                      <div class="control-group">
-                                          		<label class="control-label" for="guestoption2">Guest Option 2</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="guestoption2" value="guestoption2" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
+                                              <label class="control-label" for="gAthletics">Athletics</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="gAthletics" id="gAthletics">
+                                                  </label>
+                                              </div>
+                                              </div>
                                                      <div class="control-group">
-                                          		<label class="control-label" for="guestoption3">Guest Option 3</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="guestoption3" value="guestoption3" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						     <div class="control-group">
-                                          		<label class="control-label" for="guestoption4">Guest Option 4</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="guestoption4" value="guestoption4" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						     <div class="control-group">
-                                          		<label class="control-label" for="guestoption5">Guest Option 5</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="guestoption5" value="guestoption5" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                  </fieldset>
-                                                </form>
+                                              <label class="control-label" for="gUniversityEvent">University Events</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="gUniversityEvent" id="gUniversityEvent">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="gGeneralUniversityInfo">General University Info</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="gGeneralUniversityInfo" id="gGeneralUniversityInfo">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="gSearchCourses">Search Courses</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="gSearchCourses" id="gSearchCourses">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="gCampusMap">Campus Maps</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="gCampusMap" id="gCampusMap">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="gSocialMedia">Social Media</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="gSocialMedia" id="gSocialMedia">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="gAdmissionInfo">Admission Info</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="gAdmissionInfo" id="gAdmissionInfo">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="gRequestForInfo">Request For Info</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox"  name="gRequestForInfo" id="gRequestForInfo">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                                <!--  </fieldset>-->
+                                               <!-- </form>-->
                                             </div>
                                             <div class="tab-pane" id="tab3">
-                                                <form class="form-horizontal">
-                                                  <fieldset>
+                                                <!--<form class="form-horizontal">-->
+                                                 <!-- <fieldset>-->
+                                                    <div class="control-group">
+                                              <label class="control-label" for="sViewClassSchedule">View Class Schedule</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox"  name="sViewClassSchedule" id="sViewClassSchedule" >
+                                                  </label>
+                                              </div>
+                                              </div>
                                                      <div class="control-group">
-                                          		<label class="control-label" for="studentoption1">Student Option 1</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="studentoption1" value="studentoption1" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="studentoption2">Student Option 2</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="studentoption2" value="studentoption2" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="studentoption3">Student Option 3</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="studentoption3" value="studentoption3" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						     <div class="control-group">
-                                          		<label class="control-label" for="studentoption4">Student Option 4</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="studentoption4" value="studentoption4" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						     <div class="control-group">
-                                          		<label class="control-label" for="studentoption5">Student Option 5</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="studentoption5" value="studentoption5" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                  </fieldset>
-                                                </form>
+                                              <label class="control-label" for="sViewEmail">View Email</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="sViewEmail" id="sViewEmail">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="sEnrollAddDropSwap">Enroll Add-Drop-Swap Class</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="sEnrollAddDropSwap" id="sEnrollAddDropSwap">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="sViewHolds">View Holds</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="sViewHolds" id="sViewHolds">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="sViewToDos">View ToDos</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="sViewToDos" id="sViewToDos">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="sViewCommunication">View Communication</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="sViewCommunication" id="sViewCommunication">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="sViewPayBill">View Pay Bill</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="sViewPayBill" id="sViewPayBill">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="sAcceptDeclineFinancialAid">Accept Decline Financial Aid</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox"  name="sAcceptDeclineFinancialAid" id="sAcceptDeclineFinancialAid">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="sUpdateBio">Update Bio</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="sUpdateBio" id="sUpdateBio">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="sViewGrade">View Grade</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="sViewGrade" id="sViewGrade">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="sApplyGraduation">Apply Graduation</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="sApplyGraduation" id="sApplyGraduation" >
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="sOfficialTranscript">Official Transcript</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="sOfficialTranscript" id="sOfficialTranscript" >
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="sEnrollmentVerification">Enrollment Verification</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="sEnrollmentVerification" id="sEnrollmentVerification" >
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="sExamSchedule">Exam Schedule</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="sExamSchedule" id="sExamSchedule" >
+                                                  </label>
+                                              </div>
+                                              </div>
+                                                <!--  </fieldset>-->
+                                              <!--  </form>-->
                                             </div>
-					    <div class="tab-pane" id="tab4">
-                                                <form class="form-horizontal">
-                                                  <fieldset>
+					                                 <div class="tab-pane" id="tab4">
+                                               <!-- <form class="form-horizontal">-->
+                                                 <!-- <fieldset>-->
                                                      <div class="control-group">
-                                          		<label class="control-label" for="applicantoption1">Applicant Option 1</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="applicantoption1" value="applicantoption1" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
+                                          		<label class="control-label" for="aMakeDonation">Make Donation</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="aMakeDonation" id="aMakeDonation" >
+                                                  </label>
+                                              </div>
+                                              </div>
                                                      <div class="control-group">
-                                          		<label class="control-label" for="applicantoption2">Applicant Option 2</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="applicantoption2" value="applicantoption2" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="applicantoption3">Applicant Option 3</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="applicantoption3" value="applicantoption3" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						     <div class="control-group">
-                                          		<label class="control-label" for="applicantoption1">Applicant Option 4</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="applicantoption4" value="applicantoption4" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						     <div class="control-group">
-                                          		<label class="control-label" for="option1">Applicant Option 5</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="option5" value="option5" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                  </fieldset>
-                                                </form>
+                                              <label class="control-label" for="aAlumniEventCalender">Alumni Event Calender</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="aAlumniEventCalender" id="aAlumniEventCalender">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                                     
+                                              <div class="control-group">
+                                              <label class="control-label" for="aUpdatePersonalInformation">Update Personal Information</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="aUpdatePersonalInformation" id="aUpdatePersonalInformation" >
+                                                  </label>
+                                              </div>
+                                              </div>
+                                                  <!--</fieldset>-->
+                                                <!--</form>-->
                                             </div>
-					    <div class="tab-pane" id="tab5">
-                                                <form class="form-horizontal">
-                                                  <fieldset>
+					                                 <div class="tab-pane" id="tab5">
+                                                <!--<form class="form-horizontal">-->
+                                                  <!--<fieldset>-->
                                                      <div class="control-group">
-                                          		<label class="control-label" for="option1">Faculty Option 1</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="option1" value="option1" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
+                                          		<div class="control-group">
+                                              <label class="control-label" for="fTeachingSchedule">Teaching Schedule</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="fTeachingSchedule" id="fTeachingSchedule" >
+                                                  </label>
+                                              </div>
+                                              </div>
                                                      <div class="control-group">
-                                          		<label class="control-label" for="option2">Faculty Option 2</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="option2" value="option2" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
+                                              <label class="control-label" for="fClassRoster">Class Roster</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="fClassRoster" id="fClassRoster">
+                                                  </label>
+                                              </div>
+                                              </div>
                                                      <div class="control-group">
-                                          		<label class="control-label" for="option1">Faculty Option 3</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="option3" value="option3" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						     <div class="control-group">
-                                          		<label class="control-label" for="option1">Faculty Option 4</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="option4" value="option4" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						     <div class="control-group">
-                                          		<label class="control-label" for="option1">Faculty Option 5</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="option5" value="option5" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                  </fieldset>
-                                                </form>
+                                              <label class="control-label" for="fGradeRoster">Grade Roster</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="fGradeRoster" id="fGradeRoster" >
+                                                  </label>
+                                              </div>
+                                              </div>
+                                               <div class="control-group">
+                                              <label class="control-label" for="fGradeToAllStudents">Grade To All Students</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                  <input class="uniform_on" type="checkbox" name="fGradeToAllStudents" id="fGradeToAllStudents">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                              <div class="control-group">
+                                              <label class="control-label" for="fExamSchedule">Exam Schedule</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="fExamSchedule" id="fExamSchedule" >
+                                                  </label>
+                                              </div>
+                                              </div>
+                                                 <!-- </fieldset>-->
+                                                <!--</form>-->
                                             </div>
-					    <div class="tab-pane" id="tab6">
-                                                <form class="form-horizontal">
-                                                  <fieldset>
+					                                   <div class="tab-pane" id="tab6">
+                                               <!-- <form class="form-horizontal">-->
+                                                  <!--<fieldset>-->
                                                      <div class="control-group">
-                                          		<label class="control-label" for="option1">Employee Option 1</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="option1" value="option1" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="option2">Employee Option 2</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="option2" value="option2" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="option1">Employee Option 3</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="option3" value="option3" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						     <div class="control-group">
-                                          		<label class="control-label" for="option1">Employee Option 4</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="option4" value="option4" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						     <div class="control-group">
-                                          		<label class="control-label" for="option1">Employee Option 5</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" id="option5" value="option5" checked>
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                  </fieldset>
-                                                </form>
+                                              <label class="control-label" for="eMyPayCheck">Pay Check</label>
+                                              <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="eMyPayCheck" id="eMyPayCheck">
+                                                  </label>
+                                              </div>
+                                              </div>
+                                                  <!--</fieldset>-->
+                                                <!--</form>-->
                                             </div>
+                                            <div class="tab-pane" id="tab7">
+                                              <!--<form class="form-horizontal">-->
+                                              <!--<fieldset>-->
+                                                <div class="control-group">
+                                               <label class="control-label" for="oAdmissionControlCenter">Admission Control Center</label>
+                                                <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="oAdmissionControlCenter" id="oAdmissionControlCenter">
+                                                  </label>
+                                                </div>
+                                                </div>
+                                                <div class="control-group">
+                                               <label class="control-label" for="oAuthenticationSetup">Authentication Setup</label>
+                                                <div class="controls">
+                                                  <label class="uniform">
+                                                    <input class="uniform_on" type="checkbox" name="oAuthenticationSetup" id="oAuthenticationSetup">
+                                                  </label>
+                                                </div>
+                                                </div>
+
+                                                  <!--</fieldset>-->
+                                              <!--</form>-->
+                                              </fieldset>
+                                            </form>
+                                            </div>
+                                            
+                                           
                                             <ul class="pager wizard">
                                                 <li class="previous first" style="display:none;"><a href="javascript:void(0);">First</a></li>
                                                 <li class="previous"><a href="javascript:void(0);">Previous</a></li>
                                                 <li class="next last" style="display:none;"><a href="javascript:void(0);">Last</a></li>
                                                 <li class="next"><a href="javascript:void(0);">Next</a></li>
-                                                <li class="next finish" style="display:none;"><a href="#finishWizardModal">Finish</a></li>
-                                            </ul>
-                                        </div>  
+                                                <li class="next finish" style="display:none;" ><a href="#finishWizardModal">Finish</a></li>
+                                            </ul>  
+                                            
+                                        </div> 
+                                       
+                                           
                                     </div>
+                                    
+                                             
                                 </div>
+                               
                             </div>
                         </div>
                         <!-- /block -->
                     </div>
+                    
 	            <!-- /wizard -->
 
                 </div>
@@ -417,6 +484,13 @@
             }});
 	
             $('#rootwizard .finish').click(function() {
+            var data = $("#formid").serialize();
+            console.log("data is"+data);
+             $.ajax({
+               url : '/registerNewInst',
+                type : 'POST',
+                data:$("#formid").serialize()
+            });
 		  $('#finishWizardModal').modal({
 			keyboard : false});
                 //alert('Finished!, Starting over!');
