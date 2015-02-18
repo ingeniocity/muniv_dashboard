@@ -36,50 +36,51 @@ $(document).ready(function(){
 
 function updatefeatures(data)
 {
+    console.log("here");
     console.log(data);
-    $("#instName").val(data.data.instituteInfo[0].instituteName);
-    $("#instCode").val(data.data.instituteInfo[0].instituteCode);
+    $("#instName").val(data.data[0].instName);
+    $("#instCode").val(data.data[0].instCode);
     
-    console.log(data.data.guestFeatures[0].gAdmissionInfo);
-    $("#gAcademicInfo").prop("checked", data.data.guestFeatures[0].gAcademicInfo );
-    $("#gAcademicInfo").prop("value", data.data.guestFeatures[0].gAcademicInfo);
-    $("#gAthletics").prop("checked", data.data.guestFeatures[0].gAthletics);
-    $("#gUniversityEvent").prop("checked", data.data.guestFeatures[0].gUniversityEvent);
-    $("#gGeneralUniversityInfo").prop("checked", data.data.guestFeatures[0].gSearchCourses);
-    $("#gCampusMap").prop("checked", data.data.guestFeatures[0].gCampusMap);
-    $("#gSocialMedia").prop("checked", data.data.guestFeatures[0].gSocialMedia);
-    $("#gAdmissionInfo").prop("checked", data.data.guestFeatures[0].gAdmissionInfo);
-    $("#gRequestForInfo").prop("checked", data.data.guestFeatures[0].gRequestForInfo);
+    console.log(data.data[0].gAdmissionInfo);
+    $("#gAcademicInfo").prop("checked", data.data[0].gAcademicInfo );
+    $("#gAcademicInfo").prop("value", data.data[0].gAcademicInfo);
+    $("#gAthletics").prop("checked", data.data[0].gAthletics);
+    $("#gUniversityEvent").prop("checked", data.data[0].gUniversityEvent);
+    $("#gGeneralUniversityInfo").prop("checked", data.data[0].gSearchCourses);
+    $("#gCampusMap").prop("checked", data.data[0].gCampusMap);
+    $("#gSocialMedia").prop("checked", data.data[0].gSocialMedia);
+    $("#gAdmissionInfo").prop("checked", data.data[0].gAdmissionInfo);
+    $("#gRequestForInfo").prop("checked", data.data[0].gRequestForInfo);
 
-    $("#sViewClassSchedule").prop("checked", data.data.studentFeatures[0].sViewClassSchedule);
-    $("#sViewEmail").prop("checked", data.data.studentFeatures[0].sViewEmail);
-    $("#sEnrollAddDropSwap").prop("checked", data.data.studentFeatures[0].sEnrollAddDropSwap);
-    $("#sViewHolds").prop("checked", data.data.studentFeatures[0].sViewHolds);
-    $("#sViewToDos").prop("checked", data.data.studentFeatures[0].sViewToDos);
-    $("#sViewCommunication").prop("checked", data.data.studentFeatures[0].sViewCommunication);
-    $("#sViewPayBill").prop("checked", data.data.studentFeatures[0].sViewPayBill);
-    $("#sAcceptDeclineFinancialAid").prop("checked", data.data.studentFeatures[0].sAcceptDeclineFinancialAid);
-    $("#sUpdateBio").prop("checked", data.data.studentFeatures[0].sUpdateBio);
-    $("#sViewGrade").prop("checked", data.data.studentFeatures[0].sViewGrade);
-    $("#sApplyGraduation").prop("checked", data.data.studentFeatures[0].sApplyGraduation);
-    $("#sOfficialTranscript").prop("checked", data.data.studentFeatures[0].sOfficialTranscript);
-    $("#sEnrollmentVerification").prop("checked", data.data.studentFeatures[0].sEnrollmentVerification);
-    $("#sExamSchedule").prop("checked", data.data.studentFeatures[0].sExamSchedule);
+    $("#sViewClassSchedule").prop("checked", data.data[0].sViewClassSchedule);
+    $("#sViewEmail").prop("checked", data.data[0].sViewEmail);
+    $("#sEnrollAddDropSwap").prop("checked", data.data[0].sEnrollAddDropSwap);
+    $("#sViewHolds").prop("checked", data.data[0].sViewHolds);
+    $("#sViewToDos").prop("checked", data.data[0].sViewToDos);
+    $("#sViewCommunication").prop("checked", data.data[0].sViewCommunication);
+    $("#sViewPayBill").prop("checked", data.data[0].sViewPayBill);
+    $("#sAcceptDeclineFinancialAid").prop("checked", data.data[0].sAcceptDeclineFinancialAid);
+    $("#sUpdateBio").prop("checked", data.data[0].sUpdateBio);
+    $("#sViewGrade").prop("checked", data.data[0].sViewGrade);
+    $("#sApplyGraduation").prop("checked", data.data[0].sApplyGraduation);
+    $("#sOfficialTranscript").prop("checked", data.data[0].sOfficialTranscript);
+    $("#sEnrollmentVerification").prop("checked", data.data[0].sEnrollmentVerification);
+    $("#sExamSchedule").prop("checked", data.data[0].sExamSchedule);
 
-    $("#aMakeDonation").prop("checked", data.data.alumniFeatures[0].aMakeDonation);
-    $("#aAlumniEventCalender").prop("checked", data.data.alumniFeatures[0].aAlumniEventCalender);
-    $("#aUpdatePersonalInformation").prop("checked", data.data.alumniFeatures[0].aUpdatePersonalInformation);
+    $("#aMakeDonation").prop("checked", data.data[0].aMakeDonation);
+    $("#aAlumniEventCalender").prop("checked", data.data[0].aAlumniEventCalender);
+    $("#aUpdatePersonalInformation").prop("checked", data.data[0].aUpdatePersonalInformation);
 
-    $("#fTeachingSchedule").prop("checked", data.data.facultyFeatures[0].fTeachingSchedule);
-    $("#fClassRoster").prop("checked", data.data.facultyFeatures[0].fClassRoster);
-    $("#fGradeRoster").prop("checked", data.data.facultyFeatures[0].fGradeRoster);
-    $("#fGradeToAllStudents").prop("checked", data.data.facultyFeatures[0].fGradeToAllStudents);
-    $("#fExamSchedule").prop("checked", data.data.facultyFeatures[0].fExamSchedule);
+    $("#fTeachingSchedule").prop("checked", data.data[0].fTeachingSchedule);
+    $("#fClassRoster").prop("checked", data.data[0].fClassRoster);
+    $("#fGradeRoster").prop("checked", data.data[0].fGradeRoster);
+    $("#fGradeToAllStudents").prop("checked", data.data[0].fGradeToAllStudents);
+    $("#fExamSchedule").prop("checked", data.data[0].fExamSchedule);
 
-    $("#eMyPayCheck").prop("checked", data.data.employeeFeatures[0].eMyPayCheck);
+    $("#eMyPayCheck").prop("checked", data.data[0].eMyPayCheck);
 
-    $("#oAdmissionControlCenter").prop("checked", data.data.otherFeatures[0].oAdmissionControlCenter);
-    $("#eMyPayCheck").prop("checked", data.data.otherFeatures[0].oAdmissionControlCenter);
+    $("#oAdmissionControlCenter").prop("checked", data.data[0].oAdmissionControlCenter);
+    $("#eMyPayCheck").prop("checked", data.data[0].oAdmissionControlCenter);
 
 
     var ldiv = document.getElementById("LoadingDiv");
@@ -172,6 +173,7 @@ function updatefeatures(data)
                                                       <label class="control-label" for="instName">Institute Name</label>
                                                       <div class="controls">
                                                         <input class="input-xlarge focused" name="instName" id="instName" type="text" value="">
+                                                        
                                                       </div>
                                                     </div>
                                                     <div class="control-group">

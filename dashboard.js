@@ -104,19 +104,22 @@ next();
 //basic routes
 app.get('/', function(req, res){
 	res.redirect('login');
-	console.log("empty response");
+	//console.log("empty response");
 });
 
 app.get('/login', function(req,res){
-
+	var str = qs.parse(req.url.split('?')[1]);
+	console.log(str);
 	if(req.param("release") == "true"){
+		console.log("before session destroy");
 		req.session.destroy(function(err){
 			if(err){
 				console.log(err);
 			}
 			else
 			{
-				res.redirect('/login');
+				console.log("no error");
+				res.render('/login', {title : "LOGIN"});
 			}
 		});
 	}
@@ -130,15 +133,15 @@ app.get('/login', function(req,res){
 			res.cookie('signed_monster', 'nom nom', { signed: true });
 			res.render('login', {title : 'Login to Dashboard'});
 			console.log("inside login get");
-			var signedMonster = req.signedCookies.monster;
-			console.log("Signed Moster"+signedMonster);
+			/*var signedMonster = req.signedCookies.monster;
+			console.log("Signed Moster"+signedMonster);*/
 		}
 	}
 	
 });
 app.post('/login', function(req,res){
 
-
+	console.log(req.body);
 	var name = req.body.email +" "+ req.body.password;
 	console.log("name: "+name);
 	var info = [];
@@ -181,6 +184,7 @@ app.get('/dashboard', function(req, res) {
 	
 });
 app.post('/un', function(req, res) {
+	console.log("inside /un ")
 	db_api.countusers(db, res);
 });
 app.post('/in', function(req, res) {
@@ -213,10 +217,11 @@ app.post('/registerNewInst',function(req,res){
 	"otherFeatures":{"admissionControlCenter":req.body.oAdmissionControlCenter,"authenticationSetup":req.body.oAuthenticationSetup}
 	}];
 	console.log(features);
-	db_api.insertinstitutedata(db, res, req, info, function(res, req, data){
+	db_api.insertinstitutedata(db, res, req, features, function(res, req, data){
 		if(data)
 		{
 			console.log("data inserted");
+			console.log(data);
 			res.redirect('/dashboard');
 		}
 		else
@@ -237,7 +242,7 @@ app.get('/editSettings', function(req,res){
 		var q_str = req.url.split('?')[1];
 		console.log(qs.parse(q_str));
 		if(q_str)
-			res.render('editfeatureswizard', {title: "Edit Features", email:sess.email}); 
+			res.render('editfeatureswizard', {title: "Edit Features", INSTCODE: qs.parse(q_str).i, email:sess.email}); 
 		else
 			res.render('editsettings', {title: "Edit App Settings",email:sess.email});
 	}
@@ -248,6 +253,8 @@ app.post('/ic', function(req, res) {
 
 app.post('/es', function(req, res) {
 	var q_str = qs.parse(req.url.split('?')[1]);
+	console.log("q_str ="+q_str.i);
+	console.log("inside /es post");
 	db_api.getdatainstitute(req.db, res, q_str.i);	
 });
 app.post('/fl', function(req, res){
