@@ -247,6 +247,37 @@ app.get('/editSettings', function(req,res){
 			res.render('editsettings', {title: "Edit App Settings",email:sess.email});
 	}
 });
+app.post('/editSettings',function(req,res){
+	//console.log(req);
+
+	var name = req.body.instName;
+	console.log(name);
+	console.log(req.body.instName);
+	console.log(req.body.instCode);
+	console.log(req.body.gAcademicInfo);
+	var features=[{"instituteInfo":{"instName":req.body.instName,"instCode":req.body.instCode},
+	"guestFeatures":{"academicInfo":req.body.gAcademicInfo,"athletics":req.body.gAthletics,"universityEvent":req.body.gUniversityEvent,"generalUniversityInfo":req.body.gGeneralUniversityInfo,"searchCourses":req.body.gSearchCourses,"campusMap":req.body.gCampusMap,"socialMedia":req.body.gSocialMedia,"admissionInfo":req.body.gAdmissionInfo,requestForInfo:req.body.gRequestForInfo},
+	"studentFeatures":{"viewClassSchedule":req.body.sViewClassSchedule,"viewEmail":req.body.sViewEmail,"enrollAddDropSwap":req.body.sEnrollAddDropSwap,"viewHolds":req.body.sViewHolds,"viewToDos":req.body.sViewToDos,"viewCommunication":req.body.sViewCommunication,"viewPayBill":req.body.sViewPayBill,"acceptDeclineFinancialAid":req.body.sAcceptDeclineFinancialAid,"updateBio":req.body.sUpdateBio,"viewGrade":req.body.sViewGrade,"applyGraduation":req.body.sApplyGraduation,"officialTranscript":req.body.sOfficialTranscript,"enrollmentVerification":req.body.sEnrollmentVerification,"examSchedule":req.body.sExamSchedule},
+	"facultyFeatures":{"teachingSchedule":req.body.fTeachingSchedule,"classRoster":req.body.fClassRoster,"gradeRoster":req.body.fGradeRoster,"gradeToAllStudents":req.body.fGradeToAllStudents,"examSchedule":req.body.fExamSchedule},
+	"alumniFeatures":{"makeDonation":req.body.amakeDonation,"alumniEventCalender":req.body.aAlumniEventCalender,"updatePersonalInformation":req.body.aUpdatePersonalInformation},
+	"employeeFeatures":{"myPayCheck":req.body.eMyPayCheck},
+	"otherFeatures":{"admissionControlCenter":req.body.oAdmissionControlCenter,"authenticationSetup":req.body.oAuthenticationSetup}
+	}];
+	console.log(features);
+	db_api.updatefeatures(db, res, req, features, function(res, req, data){
+		if(data)
+		{
+			console.log("data inserted");
+			console.log(data);
+			res.redirect('/dashboard');
+		}
+		else
+		{
+			console.log("data not inserted");
+			res.redirect('/registerNewInst');	
+		}	
+	});
+});
 app.post('/ic', function(req, res) {
 	db_api.getallinstitutes(db, res);
 });

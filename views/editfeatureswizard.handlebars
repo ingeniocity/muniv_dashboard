@@ -42,45 +42,45 @@ function updatefeatures(data)
     $("#instCode").val(data.data[0].instCode);
     
     console.log(data.data[0].gAdmissionInfo);
-    $("#gAcademicInfo").prop("checked", data.data[0].gAcademicInfo );
+   // $("#gAcademicInfo").prop("checked", data.data[0].gAcademicInfo );
     $("#gAcademicInfo").prop("value", data.data[0].gAcademicInfo);
-    $("#gAthletics").prop("checked", data.data[0].gAthletics);
-    $("#gUniversityEvent").prop("checked", data.data[0].gUniversityEvent);
-    $("#gGeneralUniversityInfo").prop("checked", data.data[0].gSearchCourses);
-    $("#gCampusMap").prop("checked", data.data[0].gCampusMap);
-    $("#gSocialMedia").prop("checked", data.data[0].gSocialMedia);
-    $("#gAdmissionInfo").prop("checked", data.data[0].gAdmissionInfo);
-    $("#gRequestForInfo").prop("checked", data.data[0].gRequestForInfo);
+    $("#gAthletics").prop("value", data.data[0].gAthletics);
+    $("#gUniversityEvent").prop("value", data.data[0].gUniversityEvent);
+    $("#gGeneralUniversityInfo").prop("value", data.data[0].gSearchCourses);
+    $("#gCampusMap").prop("value", data.data[0].gCampusMap);
+    $("#gSocialMedia").prop("value", data.data[0].gSocialMedia);
+    $("#gAdmissionInfo").prop("value", data.data[0].gAdmissionInfo);
+    $("#gRequestForInfo").prop("value", data.data[0].gRequestForInfo);
 
-    $("#sViewClassSchedule").prop("checked", data.data[0].sViewClassSchedule);
-    $("#sViewEmail").prop("checked", data.data[0].sViewEmail);
-    $("#sEnrollAddDropSwap").prop("checked", data.data[0].sEnrollAddDropSwap);
-    $("#sViewHolds").prop("checked", data.data[0].sViewHolds);
-    $("#sViewToDos").prop("checked", data.data[0].sViewToDos);
-    $("#sViewCommunication").prop("checked", data.data[0].sViewCommunication);
-    $("#sViewPayBill").prop("checked", data.data[0].sViewPayBill);
-    $("#sAcceptDeclineFinancialAid").prop("checked", data.data[0].sAcceptDeclineFinancialAid);
-    $("#sUpdateBio").prop("checked", data.data[0].sUpdateBio);
-    $("#sViewGrade").prop("checked", data.data[0].sViewGrade);
-    $("#sApplyGraduation").prop("checked", data.data[0].sApplyGraduation);
-    $("#sOfficialTranscript").prop("checked", data.data[0].sOfficialTranscript);
-    $("#sEnrollmentVerification").prop("checked", data.data[0].sEnrollmentVerification);
-    $("#sExamSchedule").prop("checked", data.data[0].sExamSchedule);
+    $("#sViewClassSchedule").prop("value", data.data[0].sViewClassSchedule);
+    $("#sViewEmail").prop("value", data.data[0].sViewEmail);
+    $("#sEnrollAddDropSwap").prop("value", data.data[0].sEnrollAddDropSwap);
+    $("#sViewHolds").prop("value", data.data[0].sViewHolds);
+    $("#sViewToDos").prop("value", data.data[0].sViewToDos);
+    $("#sViewCommunication").prop("value", data.data[0].sViewCommunication);
+    $("#sViewPayBill").prop("value", data.data[0].sViewPayBill);
+    $("#sAcceptDeclineFinancialAid").prop("value", data.data[0].sAcceptDeclineFinancialAid);
+    $("#sUpdateBio").prop("value", data.data[0].sUpdateBio);
+    $("#sViewGrade").prop("value", data.data[0].sViewGrade);
+    $("#sApplyGraduation").prop("value", data.data[0].sApplyGraduation);
+    $("#sOfficialTranscript").prop("value", data.data[0].sOfficialTranscript);
+    $("#sEnrollmentVerification").prop("value", data.data[0].sEnrollmentVerification);
+    $("#sExamSchedule").prop("value", data.data[0].sExamSchedule);
 
-    $("#aMakeDonation").prop("checked", data.data[0].aMakeDonation);
-    $("#aAlumniEventCalender").prop("checked", data.data[0].aAlumniEventCalender);
-    $("#aUpdatePersonalInformation").prop("checked", data.data[0].aUpdatePersonalInformation);
+    $("#aMakeDonation").prop("value", data.data[0].aMakeDonation);
+    $("#aAlumniEventCalender").prop("value", data.data[0].aAlumniEventCalender);
+    $("#aUpdatePersonalInformation").prop("value", data.data[0].aUpdatePersonalInformation);
 
-    $("#fTeachingSchedule").prop("checked", data.data[0].fTeachingSchedule);
-    $("#fClassRoster").prop("checked", data.data[0].fClassRoster);
-    $("#fGradeRoster").prop("checked", data.data[0].fGradeRoster);
-    $("#fGradeToAllStudents").prop("checked", data.data[0].fGradeToAllStudents);
-    $("#fExamSchedule").prop("checked", data.data[0].fExamSchedule);
+    $("#fTeachingSchedule").prop("value", data.data[0].fTeachingSchedule);
+    $("#fClassRoster").prop("value", data.data[0].fClassRoster);
+    $("#fGradeRoster").prop("value", data.data[0].fGradeRoster);
+    $("#fGradeToAllStudents").prop("value", data.data[0].fGradeToAllStudents);
+    $("#fExamSchedule").prop("value", data.data[0].fExamSchedule);
 
-    $("#eMyPayCheck").prop("checked", data.data[0].eMyPayCheck);
+    $("#eMyPayCheck").prop("value", data.data[0].eMyPayCheck);
 
-    $("#oAdmissionControlCenter").prop("checked", data.data[0].oAdmissionControlCenter);
-    $("#eMyPayCheck").prop("checked", data.data[0].oAdmissionControlCenter);
+    $("#oAdmissionControlCenter").prop("value", data.data[0].oAdmissionControlCenter);
+    $("#eMyPayCheck").prop("value", data.data[0].oAdmissionControlCenter);
 
 
     var ldiv = document.getElementById("LoadingDiv");
@@ -95,9 +95,9 @@ function updatefeatures(data)
 <div id="LoadingDiv" style="display:block;">
 		<center><img src="images/ajax_loader.gif" alt="" /></center></div>
 
-<div id="finishWizardModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--<div id="finishWizardModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
-    <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">׼/button>-->
+   
     <h3 id="finishWizardModal">Key/Salt Pair for App</h3>
   </div>
   <div class="modal-body">
@@ -107,9 +107,9 @@ function updatefeatures(data)
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">OK</button>
-    <!--<button class="btn btn-primary" on-click()>Save changes</button>-->
+   
   </div>
-</div>
+</div> -->
 
         <div class="container-fluid">
             <div class="row-fluid">
@@ -163,341 +163,410 @@ function updatefeatures(data)
                                         <div id="bar" class="progress progress-striped active">
                                           <div class="bar"></div>
                                         </div>
+                                        <form  id="formid" class="form-horizontal">
+                                        <fieldset>
                                         <div class="tab-content">
                                         <!-- start div of tabs -->
                                             <div class="tab-pane" id="tab1">
                                                
-                                               <form class="form-horizontal">
-                                                  <fieldset>
+                                               <!--<form class="form-horizontal">
+                                                  <fieldset>-->
                                                     <div class="control-group">
                                                       <label class="control-label" for="instName">Institute Name</label>
                                                       <div class="controls">
-                                                        <input class="input-xlarge focused" name="instName" id="instName" type="text" value="">
-                                                        
+                                                        <input class="input-xlarge focused" name="instName" id="instName" type="text" value="" readonly>
+
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label class="control-label" for="instCode">Institute Code</label>
                                                       <div class="controls">
-                                                        <input class="input-xlarge focused" name="instCode" id="instCode" type="text" value="">
+                                                        <input class="input-xlarge focused" name="instCode" id="instCode" type="text" value="" readonly>
                                                       </div>
                                                     </div>
-                                                  </fieldset>
-                                                </form>
+                                                  <!--</fieldset>
+                                                </form>-->
                                                 
                                             </div>
                                             <div class="tab-pane" id="tab2">
-                                                <form class="form-horizontal">
-                                                  <fieldset>
+                                               <!-- <form class="form-horizontal">
+                                                  <fieldset>-->
                                                     <div class="control-group">
-                                          		<label class="control-label" for="gAcademicInfo">Academic Info</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="gAcademicInfo" id="gAcademicInfo">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="gAthletics">Athletics</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="gAthletics" id="gAthletics">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="gUniversityEvent">University Events</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="gUniversityEvent" id="gUniversityEvent">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						     <div class="control-group">
-                                          		<label class="control-label" for="gGeneralUniversityInfo">General University Info</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="gGeneralUniversityInfo" id="gGeneralUniversityInfo">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						     <div class="control-group">
-                                          		<label class="control-label" for="gSearchCourses">Search Courses</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="gSearchCourses" id="gSearchCourses">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                              <div class="control-group">
-                                          		<label class="control-label" for="gCampusMap">Campus Maps</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="gCampusMap" id="gCampusMap">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                              <div class="control-group">
-                                          		<label class="control-label" for="gSocialMedia">Social Media</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="gSocialMedia" id="gSocialMedia">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                              <div class="control-group">
-                                          		<label class="control-label" for="gAdmissionInfo">Admission Info</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="gAdmissionInfo" id="gAdmissionInfo">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                             <div class="control-group">
-                                          		<label class="control-label" for="gRequestForInfo">Request For Info</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="gRequestForInfo"id="gRequestForInfo">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                  </fieldset>
-                                                </form>
-                                                
-                                            </div>
-                                            <div class="tab-pane" id="tab3">
-                                                <form class="form-horizontal">
-                                                  <fieldset>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="sViewClassSchedule">View Class Schedule</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="sViewClassSchedule" id="sViewClassSchedule" >
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="sViewEmail">View Email</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="sViewEmail" id="sViewEmail">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                              <div class="control-group">
-                                          		<label class="control-label" for="sEnrollAddDropSwap">Enroll Add-Drop-Swap Class</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="sEnrollAddDropSwap" id="sEnrollAddDropSwap">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						                                  <div class="control-group">
-                                          		<label class="control-label" for="sViewHolds">View Holds</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="sViewHolds" id="sViewHolds">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                              <div class="control-group">
-                                              <label class="control-label" for="sViewToDos">View ToDos</label>
-                                              <div class="controls">
-                                                  <label class="uniform">
-                                                    <input class="uniform_on" type="checkbox" name="sViewToDos" id="sViewToDos">
-                                                  </label>
+                                          		        <label class="control-label" for="gAcademicInfo">Academic Info
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="gAcademicInfo"id="gAcademicInfo" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                          		        <label class="control-label" for="gAthletics">Athletics
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="gAthletics"id="gAthletics" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+                                                    <div class="control-group">
+                                          		        <label class="control-label" for="gUniversityEvent">University Events
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="gUniversityEvent"id="gUniversityEvent" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+						                                        <div class="control-group">
+                                          		        <label class="control-label" for="gGeneralUniversityInfo">General University Info
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="gGeneralUniversityInfo"id="gGeneralUniversityInfo" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                                    </div>
+						                                        <div class="control-group">
+                                          		        <label class="control-label" for="gSearchCourses">Search Courses
+                                                      </label>
+                                                      <div class="controls">
+                                                        <select name="gSearchCourses"id="gSearchCourses" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                          		        <label class="control-label" for="gCampusMap">Campus Maps
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="gCampusMap"id="gCampusMap" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+                                                    <div class="control-group">
+                                          		        <label class="control-label" for="gSocialMedia">Social Media
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="gSocialMedia"id="gSocialMedia" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+                                                    <div class="control-group">
+                                          		        <label class="control-label" for="gAdmissionInfo">Admission Info
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="gAdmissionInfo"id="gAdmissionInfo" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+                                                    <div class="control-group">
+                                          		        <label class="control-label" for="gRequestForInfo">Request For Info
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="gRequestForInfo"id="gRequestForInfo" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+                                                  <!--</fieldset>
+                                                </form>-->
                                               </div>
-                                              </div>
-                                              <div class="control-group">
-                                              <label class="control-label" for="sViewCommunication">View Communication</label>
-                                              <div class="controls">
-                                                  <label class="uniform">
-                                                    <input class="uniform_on" type="checkbox" name="sViewCommunication" id="sViewCommunication">
-                                                  </label>
-                                              </div>
-                                              </div>
-                                              <div class="control-group">
-                                              <label class="control-label" for="sViewPayBill">View Pay Bill</label>
-                                              <div class="controls">
-                                                  <label class="uniform">
-                                                    <input class="uniform_on" type="checkbox"  name="sViewPayBill" id="sViewPayBill">
-                                                  </label>
-                                              </div>
-                                              </div>
-                                              <div class="control-group">
-                                              <label class="control-label" for="sAcceptDeclineFinancialAid">Accept Decline Financial Aid</label>
-                                              <div class="controls">
-                                                  <label class="uniform">
-                                                    <input class="uniform_on" type="checkbox" name="sAcceptDeclineFinancialAid" id="sAcceptDeclineFinancialAid">
-                                                  </label>
-                                              </div>
-                                              </div>
-                                              <div class="control-group">
-                                              <label class="control-label" for="sUpdateBio">Update Bio</label>
-                                              <div class="controls">
-                                                  <label class="uniform">
-                                                    <input class="uniform_on" type="checkbox"  name="sUpdateBio" id="sUpdateBio">
-                                                  </label>
-                                              </div>
-                                              </div>
-                                              <div class="control-group">
-                                              <label class="control-label" for="sViewGrade">View Grade</label>
-                                              <div class="controls">
-                                                  <label class="uniform">
-                                                    <input class="uniform_on" type="checkbox"  name="sViewGrade" id="sViewGrade">
-                                                  </label>
-                                              </div>
-                                              </div>
-                                              <div class="control-group">
-                                              <label class="control-label" for="sApplyGraduation">Apply Graduation</label>
-                                              <div class="controls">
-                                                  <label class="uniform">
-                                                    <input class="uniform_on" type="checkbox" name="sApplyGraduation" id="sApplyGraduation" >
-                                                  </label>
-                                              </div>
-                                              </div>
-                                              <div class="control-group">
-                                              <label class="control-label" for="sOfficialTranscript">Official Transcript</label>
-                                              <div class="controls">
-                                                  <label class="uniform">
-                                                    <input class="uniform_on" type="checkbox"  name="sOfficialTranscript" id="sOfficialTranscript" >
-                                                  </label>
-                                              </div>
-                                              </div>
-                                              <div class="control-group">
-                                              <label class="control-label" for="sEnrollmentVerification">Enrollment Verification</label>
-                                              <div class="controls">
-                                                  <label class="uniform">
-                                                    <input class="uniform_on" type="checkbox" name="sEnrollmentVerification" id="sEnrollmentVerification" >
-                                                  </label>
-                                              </div>
-                                              </div>
-						                                  <div class="control-group">
-                                          		<label class="control-label" for="sExamSchedule">Exam Schedule</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="sExamSchedule" id="sExamSchedule" >
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                  </fieldset>
-                                                </form>
+                                              <div class="tab-pane" id="tab3">
+                                                <!--<form class="form-horizontal">
+                                                  <fieldset>-->
+                                                    <div class="control-group">
+                                          		        <label class="control-label" for="sViewClassSchedule">View Class Schedule
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="sViewClassSchedule"id="sViewClassSchedule" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+                                                    <div class="control-group">
+                                          		        <label class="control-label" for="sViewEmail">View Email
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="sViewEmail"id="sViewEmail" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+                                                    <div class="control-group">
+                                          		        <label class="control-label" for="sEnrollAddDropSwap">Enroll Add-Drop-Swap Class
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="sEnrollAddDropSwap"id="sEnrollAddDropSwap" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+						                                        <div class="control-group">
+                                          		        <label class="control-label" for="sViewHolds">View Holds
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="sViewHolds"id="sViewHolds" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+                                                  <div class="control-group">
+                                                    <label class="control-label" for="sViewToDos">View ToDos
+                                                    </label>
+                                                    <div class="controls">
+                                                      <select name="sViewToDos"id="sViewToDos" class="chzn-select">
+                                                        <option value="true">Enable</option>
+                                                        <option value="false">Disable</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+                                                  <div class="control-group">
+                                                    <label class="control-label" for="sViewCommunication">View Communication
+                                                    </label>
+                                                    <div class="controls">
+                                                      <select name="sViewCommunication"id="sViewCommunication" class="chzn-select">
+                                                        <option value="true">Enable</option>
+                                                        <option value="false">Disable</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+                                                  <div class="control-group">
+                                                    <label class="control-label" for="sViewPayBill">View Pay Bill
+                                                    </label>
+                                                    <div class="controls">
+                                                      <select name="sViewPayBill"id="sViewPayBill" class="chzn-select">
+                                                        <option value="true">Enable</option>
+                                                        <option value="false">Disable</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+                                                  <div class="control-group">
+                                                    <label class="control-label" for="sAcceptDeclineFinancialAid">Accept Decline Financial Aid
+                                                    </label>
+                                                    <div class="controls">
+                                                      <select name="sAcceptDeclineFinancialAid"id="sAcceptDeclineFinancialAid" class="chzn-select">
+                                                        <option value="true">Enable</option>
+                                                        <option value="false">Disable</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+                                                  <div class="control-group">
+                                                    <label class="control-label" for="sUpdateBio">Update Bio
+                                                    </label>
+                                                    <div class="controls">
+                                                      <select name="sUpdateBio"id="sUpdateBio" class="chzn-select">
+                                                        <option value="true">Enable</option>
+                                                        <option value="false">Disable</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+                                                  <div class="control-group">
+                                                    <label class="control-label" for="sViewGrade">View Grade
+                                                    </label>
+                                                    <div class="controls">
+                                                      <select name="sViewGrade"id="sViewGrade" class="chzn-select">
+                                                        <option value="true">Enable</option>
+                                                        <option value="false">Disable</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+                                                  <div class="control-group">
+                                                    <label class="control-label" for="sApplyGraduation">Apply Graduation
+                                                    </label>
+                                                    <div class="controls">
+                                                      <select name="sApplyGraduation"id="sApplyGraduation" class="chzn-select">
+                                                        <option value="true">Enable</option>
+                                                        <option value="false">Disable</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+                                                  <div class="control-group">
+                                                    <label class="control-label" for="sOfficialTranscript">Official Transcript
+                                                    </label>
+                                                    <div class="controls">
+                                                      <select name="sOfficialTranscript"id="sOfficialTranscript" class="chzn-select">
+                                                        <option value="true">Enable</option>
+                                                        <option value="false">Disable</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+                                                  <div class="control-group">
+                                                    <label class="control-label" for="sEnrollmentVerification">Enrollment Verification
+                                                    </label>
+                                                    <div class="controls">
+                                                      <select name="sEnrollmentVerification"id="sEnrollmentVerification" class="chzn-select">
+                                                        <option value="true">Enable</option>
+                                                        <option value="false">Disable</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+						                                      <div class="control-group">
+                                          		      <label class="control-label" for="sExamSchedule">Exam Schedule
+                                                    </label>
+                                          		      <div class="controls">
+                                                      <select name="sExamSchedule"id="sExamSchedule" class="chzn-select">
+                                                        <option value="true">Enable</option>
+                                                        <option value="false">Disable</option>
+                                                      </select>
+                                                    </div>
+                                        	        </div>
+                                                <!--</fieldset>
+                                              </form>-->
                                             </div>
 					                                  <div class="tab-pane" id="tab4">
-                                                <form class="form-horizontal">
-                                                  <fieldset>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="aMakeDonation">Make Donation</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox"  name="amakeDonation" id="aMakeDonation" >
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="aAlumniEventCalender">Alumni Event Calender</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox"  name="aAlumniEventCalender" id="aAlumniEventCalender">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                     
-						                                  <div class="control-group">
-                                          		<label class="control-label" for="aUpdatePersonalInformation">Update Personal Information</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="aUpdatePersonalInformation" id="aUpdatePersonalInformation" >
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                  </fieldset>
-                                                </form>
+                                             <!-- <form class="form-horizontal">
+                                                <fieldset>-->
+                                                  <div class="control-group">
+                                          		      <label class="control-label" for="aMakeDonation">Make Donation
+                                                    </label>
+                                          		      <div class="controls">
+                                                      <select name="aMakeDonation"id="aMakeDonation" class="chzn-select">
+                                                        <option value="true">Enable</option>
+                                                        <option value="false">Disable</option>
+                                                      </select>
+                                                    </div>
+                                        	        </div>
+                                                  <div class="control-group">
+                                          		      <label class="control-label" for="aAlumniEventCalender">Alumni Event Calender
+                                                    </label>
+                                          		      <div class="controls">
+                                                      <select name="aAlumniEventCalender"id="aAlumniEventCalender" class="chzn-select">
+                                                        <option value="true">Enable</option>
+                                                        <option value="false">Disable</option>
+                                                      </select>
+                                                    </div>
+                                          		    </div>
+                                                  <div class="control-group">
+                                          		      <label class="control-label" for="aUpdatePersonalInformation">Update Personal Information
+                                                    </label>
+                                          		      <div class="controls">
+                                                      <select name="aUpdatePersonalInformation"id="aUpdatePersonalInformation" class="chzn-select">
+                                                        <option value="true">Enable</option>
+                                                        <option value="false">Disable</option>
+                                                      </select>
+                                                    </div>
+                                        	        </div>
+                                                <!--</fieldset>
+                                              </form>-->
                                             </div>
 					                                 <div class="tab-pane" id="tab5">
-                                                <form class="form-horizontal">
-                                                  <fieldset>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="fTeachingSchedule">Teaching Schedule</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox"  name="fTeachingSchedule" id="fTeachingSchedule" >
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="fClassRoster">Class Roster</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="fClassRoster" id="fClassRoster">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="fGradeRoster">Grade Roster</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="fGradeRoster" id="fGradeRoster" >
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						                                   <div class="control-group">
-                                          		<label class="control-label" for="fGradeToAllStudents">Grade To All Students</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              		<input class="uniform_on" type="checkbox" name="fGradeToAllStudents" id="fGradeToAllStudents">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-						                                  <div class="control-group">
-                                          		<label class="control-label" for="fExamSchedule">Exam Schedule</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="fExamSchedule" id="fExamSchedule" >
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                  </fieldset>
-                                                </form>
-                                            </div>
+                                               <!-- <form class="form-horizontal">
+                                                  <fieldset>-->
+                                                    <div class="control-group">
+                                          		        <label class="control-label" for="fTeachingSchedule">Teaching Schedule
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="fTeachingSchedule"id="fTeachingSchedule" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+                                                    <div class="control-group">
+                                          		        <label class="control-label" for="fClassRoster">Class Roster
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="fClassRoster"id="fClassRoster" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+                                                    <div class="control-group">
+                                          		        <label class="control-label" for="fGradeRoster">Grade Roster
+                                                      </label>
+                                          		       <div class="controls">
+                                                        <select name="fGradeRoster"id="fGradeRoster" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+						                                        <div class="control-group">
+                                          		        <label class="control-label" for="fGradeToAllStudents">Grade To All Students
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="fGradeToAllStudents"id="fGradeToAllStudents" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+						                                        <div class="control-group">
+                                          		        <label class="control-label" for="fExamSchedule">Exam Schedule
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="fExamSchedule"id="fExamSchedule" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+                                                  <!--</fieldset>
+                                                </form>-->
+                                              </div>
 					                                   <div class="tab-pane" id="tab6">
-                                                <form class="form-horizontal">
-                                                  <fieldset>
-                                                     <div class="control-group">
-                                          		<label class="control-label" for="eMyPayCheck">Pay Check</label>
-                                          		<div class="controls">
-                                            			<label class="uniform">
-                                              			<input class="uniform_on" type="checkbox" name="eMyPayCheck" id="eMyPayCheck">
-                                            			</label>
-                                          		</div>
-                                        	    </div>
-                                                  </fieldset>
-                                              </form>
-                                            </div>
-                                            <div class="tab-pane" id="tab7">
-                                              <form class="form-horizontal">
-                                              <fieldset>
-                                                <div class="control-group">
-                                               <label class="control-label" for="oAdmissionControlCenter">Admission Control Center</label>
-                                                <div class="controls">
-                                                  <label class="uniform">
-                                                    <input class="uniform_on" type="checkbox" name="oAdmissionControlCenter" id="oAdmissionControlCenter">
-                                                  </label>
-                                                </div>
-                                                </div>
-                                                <div class="control-group">
-                                               <label class="control-label" for="oAuthenticationSetup">Authentication Setup</label>
-                                                <div class="controls">
-                                                  <label class="uniform">
-                                                    <input class="uniform_on" type="checkbox" name="oAuthenticationSetup" id="oAuthenticationSetup">
-                                                  </label>
-                                                </div>
-                                                </div>
-
-                                                  </fieldset>
-                                              </form>
+                                                <!--<form class="form-horizontal">
+                                                  <fieldset>-->
+                                                    <div class="control-group">
+                                          		        <label class="control-label" for="eMyPayCheck">Pay Check
+                                                      </label>
+                                          		        <div class="controls">
+                                                        <select name="eMyPayCheck"id="eMyPayCheck" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                        	          </div>
+                                                  <!--</fieldset>
+                                                </form>-->
+                                              </div>
+                                              <div class="tab-pane" id="tab7">
+                                               <!-- <form class="form-horizontal">
+                                                  <fieldset>-->
+                                                    <div class="control-group">
+                                                      <label class="control-label" for="oAdmissionControlCenter">Admission Control Center
+                                                      </label>
+                                                      <div class="controls">
+                                                        <select name="oAdmissionControlCenter"id="oAdmissionControlCenter" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label class="control-label" for="oAuthenticationSetup">Authentication Setup
+                                                      </label>
+                                                      <div class="controls">
+                                                        <select name="oAuthenticationSetup"id="oAuthenticationSetup" class="chzn-select">
+                                                          <option value="true">Enable</option>
+                                                          <option value="false">Disable</option>
+                                                        </select>
+                                                      </div>
+                                                    </div>
+                                                  <!--</fieldset>
+                                                </form>-->
                                              <!-- finish all tabs --> 
                                             </div>
+                                            </fieldset>
+                                            </form>
                                             <ul class="pager wizard">
                                                 <li class="previous first" style="display:none;"><a href="javascript:void(0);">First</a></li>
                                                 <li class="previous"><a href="javascript:void(0);">Previous</a></li>
@@ -564,9 +633,23 @@ function updatefeatures(data)
                 }
             }});
 	
-            $('#rootwizard .finish').click(function() {
+            /*$('#rootwizard .finish').click(function() {
 		  $('#finishWizardModal').modal({
 			keyboard : false});
+                //alert('Finished!, Starting over!');
+                $('#rootwizard').find("a[href*='tab1']").trigger('click');
+            });*/
+ $('#rootwizard .finish').click(function() {
+            console.log("after we enter finish button");
+            var data = $("#formid").serialize();
+            console.log("data is"+data);
+             $.ajax({
+               url : '/editSettings',
+                type : 'POST',
+                data:$("#formid").serialize()
+            });
+      $('#finishWizardModal').modal({
+      keyboard : false});
                 //alert('Finished!, Starting over!');
                 $('#rootwizard').find("a[href*='tab1']").trigger('click');
             });
