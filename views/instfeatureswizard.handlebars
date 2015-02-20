@@ -9,12 +9,12 @@
     <h3 id="finishWizardModal">Key/Salt Pair for App</h3>
   </div>
   <div class="modal-body">
-    <p>Key : {{key}}</p>
-    <p>Salt : {{salt}}</p>
+    <p>Key : <spam id="k1"></spam></p>
+    <p>Salt : <spam id="s1"></spam></p>
     <p class="">Please take note of Key and Salt pair. You would need to generate a new pair if you loose it.</p>
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">OK</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true"onclick="fun()">OK</button>
     <!--<button class="btn btn-primary" on-click()>Save changes</button>-->
   </div>
 </div>
@@ -511,6 +511,11 @@
 
 
 <script>
+function fun()
+{
+  
+   window.location.href='/editSettings'
+}
 
 	jQuery(document).ready(function() {   
 	   FormValidation.init();
@@ -542,7 +547,17 @@
              $.ajax({
                url : '/registerNewInst',
                 type : 'POST',
-                data:$("#formid").serialize()
+                data:$("#formid").serialize(),
+                success:function(data)
+                {
+                  //alert("inserted");
+                  //alert(data[0].key);
+                 // alert(data.data[0].key);
+                 // alert(data.data[0].salt);
+                  //#(k1).html=data.data[0].key;
+                  document.getElementById("k1").innerHTML=data.data[0].key;
+                  document.getElementById("s1").innerHTML=data.data[0].salt;
+                }
             });
 		  $('#finishWizardModal').modal({
 			keyboard : false});

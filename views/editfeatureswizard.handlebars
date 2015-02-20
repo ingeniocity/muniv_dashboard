@@ -27,6 +27,10 @@ $(document).ready(function(){
                 type : 'POST',
                 success: function(data){
                         updatefeatures(data);
+                        if(data)
+                        {
+                          console.log("after update in ajax");
+                        }
                 },
                 error: function(data){
                         console.log("There was some error!");
@@ -41,12 +45,13 @@ function updatefeatures(data)
     $("#instName").val(data.data[0].instName);
     $("#instCode").val(data.data[0].instCode);
     
-    console.log(data.data[0].gAdmissionInfo);
+    console.log(data.data[0].gUniversityInfo);
    // $("#gAcademicInfo").prop("checked", data.data[0].gAcademicInfo );
     $("#gAcademicInfo").prop("value", data.data[0].gAcademicInfo);
     $("#gAthletics").prop("value", data.data[0].gAthletics);
     $("#gUniversityEvent").prop("value", data.data[0].gUniversityEvent);
-    $("#gGeneralUniversityInfo").prop("value", data.data[0].gSearchCourses);
+    $("#gGeneralUniversityInfo").prop("value", data.data[0].gGeneralUniversityInfo);
+    $("#gSearchCourses").prop("value", data.data[0].gSearchCourses);
     $("#gCampusMap").prop("value", data.data[0].gCampusMap);
     $("#gSocialMedia").prop("value", data.data[0].gSocialMedia);
     $("#gAdmissionInfo").prop("value", data.data[0].gAdmissionInfo);
@@ -646,7 +651,11 @@ function updatefeatures(data)
              $.ajax({
                url : '/editSettings',
                 type : 'POST',
-                data:$("#formid").serialize()
+                data:$("#formid").serialize(),
+                success:function(data){
+                  alert("Record Updated");
+                  window.location.href='/editSettings'
+                }
             });
       $('#finishWizardModal').modal({
       keyboard : false});

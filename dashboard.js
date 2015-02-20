@@ -1,6 +1,6 @@
 var express = require('express');
 var handlebars = require('express-handlebars');
-
+var bodyParser = require('body-parser');
 var mongo = require('mongodb');
 var monk = require('monk');
 
@@ -88,7 +88,8 @@ app.use(function(req, res, next) {
 	next();
 });
 // include bodyParser
-app.use(express.bodyParser());
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 //cookies Secret
 app.use(require('cookie-parser')(credentials.cookieSecret));
 //session
@@ -119,7 +120,7 @@ app.get('/login', function(req,res){
 			else
 			{
 				console.log("no error");
-				res.render('/login', {title : "LOGIN"});
+				res.render('login', {title : "LOGIN",layout:"login1"});
 			}
 		});
 	}
@@ -131,7 +132,7 @@ app.get('/login', function(req,res){
 		}
 		else{
 			res.cookie('signed_monster', 'nom nom', { signed: true });
-			res.render('login', {title : 'Login to Dashboard'});
+			res.render('login', {title : 'Login to Dashboard',layout:"login1"});
 			console.log("inside login get");
 			/*var signedMonster = req.signedCookies.monster;
 			console.log("Signed Moster"+signedMonster);*/
