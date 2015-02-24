@@ -7,7 +7,7 @@ var monk = require('monk');
 var qs = require('querystring');
 var credentials = require('./credentials.js');
 //Create Database Object using Monk
-var db = monk('localhost:27017/mUnivDatabase');
+var db = monk('localhost:27017/mUnivDashboard');
 
 var db_api = require('./lib/dbApi.js');
 
@@ -73,7 +73,7 @@ var options = require('./lib/options.js');
 
 console.log(ehbs);
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 5000);
 
 //Production or Test Version query string
 app.use(function(req, res, next){
@@ -81,6 +81,14 @@ app.use(function(req, res, next){
 	req.query.test === '1';
 	next();
 });
+
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
+
+
 
 //for database
 app.use(function(req, res, next) {
@@ -260,7 +268,7 @@ app.post('/editSettings',function(req,res){
 	"guestFeatures":{"academicInfo":req.body.gAcademicInfo,"athletics":req.body.gAthletics,"universityEvent":req.body.gUniversityEvent,"generalUniversityInfo":req.body.gGeneralUniversityInfo,"searchCourses":req.body.gSearchCourses,"campusMap":req.body.gCampusMap,"socialMedia":req.body.gSocialMedia,"admissionInfo":req.body.gAdmissionInfo,requestForInfo:req.body.gRequestForInfo},
 	"studentFeatures":{"viewClassSchedule":req.body.sViewClassSchedule,"viewEmail":req.body.sViewEmail,"enrollAddDropSwap":req.body.sEnrollAddDropSwap,"viewHolds":req.body.sViewHolds,"viewToDos":req.body.sViewToDos,"viewCommunication":req.body.sViewCommunication,"viewPayBill":req.body.sViewPayBill,"acceptDeclineFinancialAid":req.body.sAcceptDeclineFinancialAid,"updateBio":req.body.sUpdateBio,"viewGrade":req.body.sViewGrade,"applyGraduation":req.body.sApplyGraduation,"officialTranscript":req.body.sOfficialTranscript,"enrollmentVerification":req.body.sEnrollmentVerification,"examSchedule":req.body.sExamSchedule},
 	"facultyFeatures":{"teachingSchedule":req.body.fTeachingSchedule,"classRoster":req.body.fClassRoster,"gradeRoster":req.body.fGradeRoster,"gradeToAllStudents":req.body.fGradeToAllStudents,"examSchedule":req.body.fExamSchedule},
-	"alumniFeatures":{"makeDonation":req.body.amakeDonation,"alumniEventCalender":req.body.aAlumniEventCalender,"updatePersonalInformation":req.body.aUpdatePersonalInformation},
+	"alumniFeatures":{"makeDonation":req.body.aMakeDonation,"alumniEventCalender":req.body.aAlumniEventCalender,"updatePersonalInformation":req.body.aUpdatePersonalInformation},
 	"employeeFeatures":{"myPayCheck":req.body.eMyPayCheck},
 	"otherFeatures":{"admissionControlCenter":req.body.oAdmissionControlCenter,"authenticationSetup":req.body.oAuthenticationSetup}
 	}];
@@ -288,6 +296,15 @@ app.post('/es', function(req, res) {
 	console.log("q_str ="+q_str.i);
 	console.log("inside /es post");
 	db_api.getdatainstitute(req.db, res, q_str.i);	
+});
+app.get('/fl', function(req, res){
+        var q_str = qs.parse(req.url.split('?')[1]);
+        console.log(q_str);
+ 
+        if(!(q_str.i && q_str.k && q_str.s))
+                res.send({success:false, data:"Authentication Failed"});
+        else
+                db_api.getdatainstituteks(req.db, res, q_str);
 });
 app.post('/fl', function(req, res){
 	var q_str = qs.parse(req.url.split('?')[1]);

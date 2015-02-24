@@ -11,7 +11,8 @@
     "mongo": "^0.1.0",
     "mongodb": "^1.4.29",
     "monk": "^0.9.1",
-    "querystring": "^0.2.0"
+    "querystring": "^0.2.0",
+    "body-parser": "^1.12.0"
   },
   "devDependencies": {
     "chai": "^1.10.0",
