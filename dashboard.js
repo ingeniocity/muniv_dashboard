@@ -3,6 +3,24 @@ var handlebars = require('express-handlebars');
 var bodyParser = require('body-parser');
 var mongo = require('mongodb');
 var monk = require('monk');
+var Converter=require("csvtojson").core.Converter;
+var fs=require("fs");
+
+var csvFileName="./data/subjects.csv";
+
+var fileStream=fs.createReadStream(csvFileName);
+
+//new converter instance 
+var csvConverter=new Converter({constructResult:true});
+var subjects = "";
+//end_parsed will be emitted once parsing finished 
+csvConverter.on("end_parsed",function(jsonObj){
+   subjects = jsonObj;
+   console.log(subjects); //here is your result json object 
+});
+
+//read from file 
+fileStream.pipe(csvConverter);
 
 var qs = require('querystring');
 var credentials = require('./credentials.js');
@@ -314,6 +332,13 @@ app.post('/fl', function(req, res){
 		res.send({success:false, data:"Authentication Failed"});
 	else
 		db_api.getdatainstituteks(req.db, res, q_str);
+});
+
+app.get('/sub', function(req, res) {
+	if(subjects)
+		res.send({success:true, data: subjects});
+	else
+		res.send({success:false, data: ""});	
 });
 app.get('/uploadData', function(req,res){
 	sess=req.session;
