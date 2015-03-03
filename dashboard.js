@@ -3,6 +3,7 @@ var handlebars = require('express-handlebars');
 var bodyParser = require('body-parser');
 var mongo = require('mongodb');
 var monk = require('monk');
+var nodemailer = require("nodemailer");
 var Converter=require("csvtojson").core.Converter;
 var fs=require("fs");
 
@@ -25,7 +26,7 @@ fileStream.pipe(csvConverter);
 var qs = require('querystring');
 var credentials = require('./credentials.js');
 //Create Database Object using Monk
-var db = monk('localhost:27017/mUnivDashboard');
+var db = monk('localhost:27017/mUnivDatabase');
 
 var db_api = require('./lib/dbApi.js');
 
@@ -91,7 +92,7 @@ var options = require('./lib/options.js');
 
 console.log(ehbs);
 
-app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.PORT || 3000);
 
 //Production or Test Version query string
 app.use(function(req, res, next){
@@ -360,6 +361,136 @@ app.get('/users', function(req,res){
 		res.render('users', {title: "Manage Users",email:sess.email});
 	}
 	
+});
+app.get('/ul',function(req,res){
+	var email = qs.parse(req.url.split('?')[1]);
+	var employeeNumber=qs.parse(req.url.split('?')[2]);
+	var	employeeNumber=8787;
+	var email="gauravchandna84@gmail.com";
+	var info =[{"employeeNumber":employeeNumber}];
+	db_api.otpExists(db, res, req, info, function(res, req, data,message){
+		if(!data)
+		{
+			console.log("data blank");
+			var otp='', superSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.@$%';
+			for (var i=0; i < 9; i++) { 
+			otp += superSet.charAt(Math.floor(Math.random()*superSet.length)); 
+			}
+			console.log("dashboard generated otp is");
+			console.log(otp);
+		}
+		else
+		{
+			console.log("dashboard otp already there");
+			otp=data;
+		}
+		var info = [];
+		var emailotp = {"email" : email, "otp" : otp,"employeeNumber":employeeNumber};
+		info.push(emailotp);
+		db_api.insertotp(db,res,req,info,function(res,req,status,errorcode){
+			console.log("back to dashboard");
+			if(status=="success")
+			{
+				smtpConfig = nodemailer.createTransport('SMTP', {
+				service: 'Gmail',
+				auth: {
+					user: "support@ingeniocity.co",
+					pass: "Support_Ingen@1234"
+		      		}      
+	    		});	
+				console.log(smtpConfig);
+	    		mailOpts = {
+					from: 'ABC' + ' &lt;' + 'support@ingeniocity.co' + '&gt;',
+					to: 'gauravchandna84@gmail.com',
+					//replace it with id you want to send multiple must be separated by , (Comma)
+					subject: 'One Time Password',
+					text: 'OTP is:'+otp
+				};
+				console.log("in middle of sending mail");
+				console.log(mailOpts);
+				smtpConfig.sendMail(mailOpts, function (error, response) {
+				//Email not sent
+					if (error) {
+						console.log("there is an error"+error);
+				 		res.send({status:"faliure", errorcode:"UNABLETOSENDMAIL"});
+					}
+					//email send sucessfully
+					else {
+							console.log("email send sucessfully");
+							res.send({status:"success",errorcode:""});
+					}
+				});	
+			}
+			else
+			{
+				res.send({status:"faliure",errorcode:"UNABLETOSENDMAIL"})
+			}
+		});
+		
+	});
+});
+
+/*app.get('/ul',function(req,res){
+	//var email = qs.parse(req.url.split('?')[1]);
+	//var employeeNumber=qs.parse(req.url.split('?')[2]);
+	//console.log("email is");
+	//console.log(email);
+	//console.log(employeeNumber);
+	var employeeNumber=1234;
+
+	var otp='', superSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.@$%';
+	for (var i=0; i < 9; i++) { 
+			otp += superSet.charAt(Math.floor(Math.random()*superSet.length)); 
+		}
+		console.log(otp);
+		smtpConfig = nodemailer.createTransport('SMTP', {
+		service: 'Gmail',
+		auth: {
+			user: "gaurav.ingeniocity@gmail.com",
+			pass: "brainpooja"
+		      }      
+	    });	
+		console.log(smtpConfig);
+	    mailOpts = {
+	
+		from: 'ABC' + ' &lt;' + 'gaurav.ingeniocity@gmail.com' + '&gt;',
+		to: 'gauravchandna84@gmail.com',
+		//replace it with id you want to send multiple must be separated by , (Comma)
+		subject: 'One Time Password',
+		text: 'Password is:'+otp
+		
+		};
+		console.log("in middle of sending mail");
+		console.log(mailOpts);
+		smtpConfig.sendMail(mailOpts, function (error, response) {
+		//Email not sent
+			if (error) {
+				console.log("there is an error"+error);
+				 res.send({success:false, data:"Failed to Send OTP"});
+			}
+			
+		//email send sucessfully
+			else {
+					console.log("email send sucessfully");
+					var info = [];
+					var emailPassword = {"email" : 'gauravchandna84@gmail.com', "password" : otp,"employeeNumber":employeeNumber};
+					info.push(emailPassword);
+					db_api.insertotp(db,res,info);
+				}
+		});
+
+});*/
+app.get('/co',function(req,res){
+	//var employeeNumber=qs.parse(req.url.split('?')[1]);
+	//var otp=qs.parse(req.url.split('?')[2]);
+	var employeeNumber=qs.parse(req.url.split('?')[1]);
+	var otp = qs.parse(req.url.split('?')[2]);
+	var otp="123456789";
+	employeeNumber=88;
+	var info = [];
+	var otpEmployeeNumber = {"otp" : otp,"employeeNumber":employeeNumber};
+	info.push(otpEmployeeNumber);
+	db_api.checkotp(db,res,info);
 });
 app.post('/u', function(req, res){
 	//console.log("POST REQUEST USERS");
