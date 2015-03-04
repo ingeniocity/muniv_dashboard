@@ -363,6 +363,8 @@ app.get('/users', function(req,res){
 	
 });
 app.get('/ul',function(req,res){
+	//var email = qs.parse(req.url.split('?')[1]);
+	//var employeeNumber=qs.parse(req.url.split('?')[2]);
 	var q_str = qs.parse(req.url.split('?')[1]);
 	console.log(q_str);
 	var employeeNumber = q_str.eid;
@@ -370,26 +372,36 @@ app.get('/ul',function(req,res){
 	var email = q_str.eml;
 	if(!email) email="gauravchandna84@gmail.com";
 	var info =[{"employeeNumber":employeeNumber}];
-	db_api.otpExists(db, res, req, info, function(res, req, data,message){
-		if(!data)
+	var c=q_str.c;
+	if(!c) c="c306";
+	var k=q_str.k;
+	if(!k) k="3iuB@ytgUZy";
+	var s=q_str.s;
+	if(!s) s="w2k6q1isqSTgS7w$ZbbMH";
+	var ksInfo=[{"k":k,"s":s,"c":c}];
+	db_api.checkks(db,res,req,ksInfo,function(res,req,status,data,errorcode){
+		if(status=="success")
 		{
-			console.log("data blank");
-			var otp='', superSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.@$%';
-			for (var i=0; i < 9; i++) { 
-			otp += superSet.charAt(Math.floor(Math.random()*superSet.length)); 
+			db_api.otpExists(db, res, req, info, function(res, req, data,message){
+			if(!data)
+			{
+				console.log("data blank");
+				var otp='', superSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.@$%';
+				for (var i=0; i < 9; i++) { 
+				otp += superSet.charAt(Math.floor(Math.random()*superSet.length)); 
+				}
+				console.log("dashboard generated otp is");
+				console.log(otp);
 			}
-			console.log("dashboard generated otp is");
-			console.log(otp);
-		}
-		else
-		{
-			console.log("dashboard otp already there");
-			otp=data;
-		}
-		var info = [];
-		var emailotp = {"email" : email, "otp" : otp,"employeeNumber":employeeNumber};
-		info.push(emailotp);
-		db_api.insertotp(db,res,req,info,function(res,req,status,errorcode){
+			else
+			{
+				console.log("dashboard otp already there");
+				otp=data;
+			}
+			var info = [];
+			var emailotp = {"email" : email, "otp" : otp,"employeeNumber":employeeNumber};
+			info.push(emailotp);
+			db_api.insertotp(db,res,req,info,function(res,req,status,errorcode){
 			console.log("back to dashboard");
 			if(status=="success")
 			{
@@ -405,8 +417,7 @@ app.get('/ul',function(req,res){
 					from: 'SUPPORT@INGENIOCITY' + ' &lt;' + 'support@ingeniocity.co' + '&gt;',
 					to: email,
 					//replace it with id you want to send multiple must be separated by , (Comma)
-					subject: 'One Time Password to login',
-					//text: 'OTP is: <strong>'+otp+'</strong>',
+					subject: 'One Time Password to Login',
 					html: 'OTP is: <strong>'+otp+'</strong>'
 				};
 				console.log("in middle of sending mail");
@@ -426,10 +437,16 @@ app.get('/ul',function(req,res){
 			}
 			else
 			{
-				res.send({status:"faliure",errorcode:"UNABLETOSENDMAIL"})
+				res.send({status:"faliure",errorcode:"UNABLETOSENDMAIL"});
 			}
-		});
+			});
 		
+			});
+		}
+		else
+		{
+			res.send({status:status,data:data,errorcode:errorcode});
+		}
 	});
 });
 
@@ -484,18 +501,34 @@ app.get('/ul',function(req,res){
 
 });*/
 app.get('/co',function(req,res){
-	//var employeeNumber=qs.parse(req.url.split('?')[1]);
-	//var otp=qs.parse(req.url.split('?')[2]);
+	
 	console.log(q_str);
 	var q_str = qs.parse(req.url.split('?')[1]);
 	var employeeNumber = q_str.eid;
+	if(!employeeNumber) employeeNumber=888;
 	var otp = q_str.otp
-	//var otp="123456789";
-	//employeeNumber=88;
+	if(!otp) otp="jSrYWBJfY";
+	var k = q_str.k;
+	if(!k) k="3iuB@ytgUZy";
+	var s = q_str.s;
+	if(!s) s="w2k6q1isqSTgS7w$ZbbMH";
+	var c = q_str.c;
+	if(!c) c="c06";
+	var ksInfo=[{"k":k,"s":s,"c":c}];
 	var info = [];
 	var otpEmployeeNumber = {"otp" : otp,"employeeNumber":employeeNumber};
 	info.push(otpEmployeeNumber);
-	db_api.checkotp(db,res,info);
+	console.log("inside get of co");
+	db_api.checkks(db,res,req,ksInfo,function(res,req,status,data,errorcode){
+		if(status=="success")
+		{
+			db_api.checkotp(db,res,info);
+		}
+		else
+		{
+			res.send({status:status,data:data,errorcode:errorcode});
+		}
+	});
 });
 app.post('/u', function(req, res){
 	//console.log("POST REQUEST USERS");
