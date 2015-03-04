@@ -26,7 +26,7 @@ fileStream.pipe(csvConverter);
 var qs = require('querystring');
 var credentials = require('./credentials.js');
 //Create Database Object using Monk
-var db = monk('localhost:27017/mUnivDatabase');
+var db = monk('localhost:27017/mUnivDashboard');
 
 var db_api = require('./lib/dbApi.js');
 
@@ -92,7 +92,7 @@ var options = require('./lib/options.js');
 
 console.log(ehbs);
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 5000);
 
 //Production or Test Version query string
 app.use(function(req, res, next){
@@ -363,10 +363,12 @@ app.get('/users', function(req,res){
 	
 });
 app.get('/ul',function(req,res){
-	var email = qs.parse(req.url.split('?')[1]);
-	var employeeNumber=qs.parse(req.url.split('?')[2]);
-	var	employeeNumber=8787;
-	var email="gauravchandna84@gmail.com";
+	var q_str = qs.parse(req.url.split('?')[1]);
+	console.log(q_str);
+	var employeeNumber = q_str.eid;
+	if(!employeeNumber) employeeNumber=8787;
+	var email = q_str.eml;
+	if(!email) email="gauravchandna84@gmail.com";
 	var info =[{"employeeNumber":employeeNumber}];
 	db_api.otpExists(db, res, req, info, function(res, req, data,message){
 		if(!data)
@@ -400,11 +402,12 @@ app.get('/ul',function(req,res){
 	    		});	
 				console.log(smtpConfig);
 	    		mailOpts = {
-					from: 'ABC' + ' &lt;' + 'support@ingeniocity.co' + '&gt;',
-					to: 'gauravchandna84@gmail.com',
+					from: 'SUPPORT@INGENIOCITY' + ' &lt;' + 'support@ingeniocity.co' + '&gt;',
+					to: email,
 					//replace it with id you want to send multiple must be separated by , (Comma)
-					subject: 'One Time Password',
-					text: 'OTP is:'+otp
+					subject: 'One Time Password to login',
+					//text: 'OTP is: <strong>'+otp+'</strong>',
+					html: 'OTP is: <strong>'+otp+'</strong>'
 				};
 				console.log("in middle of sending mail");
 				console.log(mailOpts);
@@ -483,10 +486,12 @@ app.get('/ul',function(req,res){
 app.get('/co',function(req,res){
 	//var employeeNumber=qs.parse(req.url.split('?')[1]);
 	//var otp=qs.parse(req.url.split('?')[2]);
-	var employeeNumber=qs.parse(req.url.split('?')[1]);
-	var otp = qs.parse(req.url.split('?')[2]);
-	var otp="123456789";
-	employeeNumber=88;
+	console.log(q_str);
+	var q_str = qs.parse(req.url.split('?')[1]);
+	var employeeNumber = q_str.eid;
+	var otp = q_str.otp
+	//var otp="123456789";
+	//employeeNumber=88;
 	var info = [];
 	var otpEmployeeNumber = {"otp" : otp,"employeeNumber":employeeNumber};
 	info.push(otpEmployeeNumber);
