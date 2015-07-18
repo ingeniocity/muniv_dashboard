@@ -26,7 +26,7 @@ fileStream.pipe(csvConverter);
 var qs = require('querystring');
 var credentials = require('./credentials.js');
 //Create Database Object using Monk
-var db = monk('localhost:27017/mUnivDashboard');
+var db = monk('localhost:27017/mUnivDatabase');
 
 var db_api = require('./lib/dbApi.js');
 
@@ -92,7 +92,7 @@ var options = require('./lib/options.js');
 
 console.log(ehbs);
 
-app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.PORT || 3000);
 
 //Production or Test Version query string
 app.use(function(req, res, next){
@@ -365,10 +365,13 @@ app.get('/users', function(req,res){
 app.get('/ul',function(req,res){
 	//var email = qs.parse(req.url.split('?')[1]);
 	//var employeeNumber=qs.parse(req.url.split('?')[2]);
+	var today =new Date();
+	var milli=today.getTime();
+	console.log("date is"+milli);
 	var q_str = qs.parse(req.url.split('?')[1]);
 	console.log(q_str);
 	var employeeNumber = q_str.eid;
-	if(!employeeNumber) employeeNumber=8787;
+	if(!employeeNumber) employeeNumber=87;
 	var email = q_str.eml;
 	if(!email) email="gauravchandna84@gmail.com";
 	var info =[{"employeeNumber":employeeNumber}];
@@ -501,19 +504,20 @@ app.get('/ul',function(req,res){
 
 });*/
 app.get('/co',function(req,res){
-	
-	console.log(q_str);
-	var q_str = qs.parse(req.url.split('?')[1]);
-	var employeeNumber = q_str.eid;
-	if(!employeeNumber) employeeNumber=888;
-	var otp = q_str.otp
-	if(!otp) otp="jSrYWBJfY";
-	var k = q_str.k;
+	//var employeeNumber=qs.parse(req.url.split('?')[1]);
+	//var otp=qs.parse(req.url.split('?')[2]);
+	var q_str=qs.parse(req.url.split('?')[1]);
+	//var otp = qs.parse(req.url.split('?')[2]);
+	var c=q_str.c;
+	if(!c) c="c306";
+	var k=q_str.k;
 	if(!k) k="3iuB@ytgUZy";
-	var s = q_str.s;
+	var s=q_str.s;
 	if(!s) s="w2k6q1isqSTgS7w$ZbbMH";
-	var c = q_str.i;
-	if(!c) c="c06";
+	var otp=q_str.otp;
+	if(!otp) otp="1$lUfzAfY";
+	var employeeNumber=q_str.empNum;
+	if(!employeeNumber) employeeNumber=87;
 	var ksInfo=[{"k":k,"s":s,"c":c}];
 	var info = [];
 	var otpEmployeeNumber = {"otp" : otp,"employeeNumber":employeeNumber};
@@ -529,6 +533,7 @@ app.get('/co',function(req,res){
 			res.send({status:status,data:data,errorcode:errorcode});
 		}
 	});
+	
 });
 app.post('/u', function(req, res){
 	//console.log("POST REQUEST USERS");
