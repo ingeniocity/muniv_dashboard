@@ -372,7 +372,7 @@ app.get('/ul',function(req,res){
 	var email = q_str.eml;
 	if(!email) email="gauravchandna84@gmail.com";
 	var info =[{"employeeNumber":employeeNumber}];
-	var c=q_str.c;
+	var c=q_str.i;
 	if(!c) c="c306";
 	var k=q_str.k;
 	if(!k) k="3iuB@ytgUZy";
@@ -512,7 +512,7 @@ app.get('/co',function(req,res){
 	if(!k) k="3iuB@ytgUZy";
 	var s = q_str.s;
 	if(!s) s="w2k6q1isqSTgS7w$ZbbMH";
-	var c = q_str.c;
+	var c = q_str.i;
 	if(!c) c="c06";
 	var ksInfo=[{"k":k,"s":s,"c":c}];
 	var info = [];
